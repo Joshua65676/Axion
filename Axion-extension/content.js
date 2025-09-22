@@ -75,12 +75,18 @@ setTimeout(() => {
 
   const tweets = Array.from(document.querySelectorAll("article")).map((el) => {
     const text = el.innerText;
+    const anchor = el.querySelector('a[href*="/status/"]');
+    const match = anchor?.href.match(/status\/(\d+)/);
+    const id = match ? match[1] : null;
+
     return {
       text,
-      id: el.dataset.tweetId || null,
+      id,
       category: categorizeTweet(text),
     };
   });
+
+  console.log(tweets);
 
   fetch("http://localhost/axion/Axion-PHP/save_bookmarks.php", {
     method: "POST",
