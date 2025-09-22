@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Scrapes Twitter bookmarks and sends them to Axion.",
   "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["https://twitter.com/*"],
+  "host_permissions": ["https://twitter.com/"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Axion",
@@ -24,7 +24,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/i/bookmarks*"],
+      "matches": ["https://twitter.com/i/bookmarks"],
       "js": ["content.js"]
     }
   ]
