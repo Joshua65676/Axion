@@ -1,6 +1,5 @@
 <?php
 
-
 $host = 'localhost';
 $dbname = 'axion_bookmarks';
 $username = 'root';
