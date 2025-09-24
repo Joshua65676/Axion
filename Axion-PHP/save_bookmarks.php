@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 $raw = file_get_contents('php://input');
-file_put_contents('debug_log.txt', $raw);
+// file_put_contents('debug_log.txt', $raw);
 
 $data = json_decode($raw, true);
-file_put_contents('decoded_log.txt', print_r($data, true));
+// file_put_contents('decoded_log.txt', print_r($data, true));
 
 if (!$data || !isset($data['user_id']) || !isset($data['bookmarks'])) {
     echo json_encode(['status' => 'waiting', 'message' => 'No data received yet']);
@@ -30,11 +30,11 @@ if (empty($bookmarks)) {
 }
 
 foreach ($bookmarks as $tweet) {
-    file_put_contents('log.txt', print_r($tweet, true), FILE_APPEND);
+    // file_put_contents('log.txt', print_r($tweet, true), FILE_APPEND);
 
     // Validate tweet structure
     if (!isset($tweet['id'], $tweet['text'], $tweet['category'])) {
-        continue; // Skip incomplete entries
+        continue;
     }
 
     // Sanitize inputs
