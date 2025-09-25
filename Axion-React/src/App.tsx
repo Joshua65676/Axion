@@ -1,11 +1,18 @@
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Menu from "./components/DesktopMenu/Menu";
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline text-red-500">Hello world!!!!!</h1>
-    </>
+    <section className="container max-w-6xl mx-auto w-full">
+      <main className="">
+        <div className="">
+          <Menu />
+          <Navbar  />
+        </div>
+      </main>
+    </section>
   );
 }
 
