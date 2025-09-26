@@ -7,6 +7,9 @@
   --color-BorderGray: rgba(223, 223, 223, 255);
   --color-TextColor: rgba(0, 0, 0, 0.75);
   --color-BgBlue: rgba(29, 161, 242, 1);
+  --color-BlueHover: rgba(21, 101, 192, 1);
+  --color-ParagraphGray: rgba(0, 0, 0, 0.5);
+  --color-BgParagraph: rgba(143, 191, 250, 0.15);
 }
 
 
