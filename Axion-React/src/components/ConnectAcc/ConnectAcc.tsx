@@ -10,7 +10,6 @@ const ConnectAcc: React.FC = () => {
     setShowAuth(false);
   };
 
-
   return (
     <section className="container max-w-6xl mx-auto w-full">
       <main className="flex flex-col gap-6 relative">
@@ -39,14 +38,13 @@ const ConnectAcc: React.FC = () => {
             </div>
           </div>
         )}
-
-        {/* Authorize Page */}
-        {showAuth && (
-          <main className="-ml-7">
-            <TwitterAuth onCancel={handleCancel} />
-          </main>
-        )}
       </main>
+      {/* Authorize Page */}
+      {showAuth && (
+        <main className="">
+          <TwitterAuth onCancel={handleCancel} />
+        </main>
+      )}
     </section>
   );
 };

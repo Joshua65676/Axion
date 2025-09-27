@@ -10,7 +10,7 @@ type TwitterAuthProps = {
 
 const TwitterAuth: React.FC<TwitterAuthProps> = ({ onCancel }) => {
   return (
-    <section className="container max-w-6xl mx-auto w-full">
+    <section className="bg-[rgba(0,0,0,0.6)] bg-opacity- absolute top-0 left-0 h-[100vh] w-[100vw] z-50 items-center justify-center flex flex-col">
       <main className="flex flex-col gap-15 items-center justify-between w-[550px] h-[520px] bg-White py-13 pl-10 p-12 rounded-2xl shadow-md">
         {/* Header */}
         <div className="text-start flex flex-col gap-6">
