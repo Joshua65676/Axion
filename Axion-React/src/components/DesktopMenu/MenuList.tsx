@@ -1,5 +1,6 @@
 import React from "react";
 import { MenuListItems } from "../../constants";
+import { NavLink } from "react-router-dom";
 
 const MenuList: React.FC = () => {
   return (
@@ -13,12 +14,21 @@ const MenuList: React.FC = () => {
 
         {/* List Items */}
         <main className="flex flex-col gap-5">
-          {MenuListItems.map(({ id, icons, itemsName }) => (
+          {MenuListItems.map(({ id, icons, itemsName, path }) => (
             <ul key={id} className="text-TextColor h-7 -ml-3">
-              <li className="flex flex-row gap-4 hover:bg-BgBlue h-10 p-2.5 pl-3 rounded-2xl">
-                <img src={icons} alt={itemsName} />
-                <span className="text-[14px] font-semibold">{itemsName}</span>
-              </li>
+              <NavLink
+                to={path}
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex flex-row gap-4 h-10 p-2.5 pl-3 rounded-2xl bg-BgBlue text-"
+                    : "flex flex-row gap-4 h-10 p-2.5 pl-3 rounded-2xl hover:bg-BgBlue hover:text-"
+                }
+              >
+                <li className="flex flex-row gap-4">
+                  <img src={icons} alt={itemsName} />
+                  <span className="text-[14px] font-semibold">{itemsName}</span>
+                </li>
+              </NavLink>
             </ul>
           ))}
         </main>

@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ConnectIcon } from "../../assets";
 import TwitterAuth from "./TwitterAuth";
 import { Button } from "../ui/Button";
+import { useNavigate } from "react-router-dom";
 
 const ConnectAcc: React.FC = () => {
   const [showAuth, setShowAuth] = useState(false);
+  const navigate = useNavigate();
 
   const handleCancel = () => {
     setShowAuth(false);
   };
+
+  useEffect(() => {
+    fetch("http://localhost/axion/Axion-PHP/check-login.php")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.loggedIn) {
+          sessionStorage.setItem("loggedIn", "true");
+          sessionStorage.setItem("screen_name", data.screen_name);
+          navigate("/home");
+        }
+      });
+  }, []);
 
   return (
     <section className="container max-w-6xl mx-auto w-full">

@@ -3,7 +3,7 @@ import { Button } from "../ui/Button";
 
 const AuthorizeButton: React.FC = () => {
   const handleLogin = () => {
-    window.location.href = "http://localhost/axion/twitter-login.php";
+    window.location.href = "http://localhost/axion/Axion-PHP/twitter-login.php";
   };
 
   return (
