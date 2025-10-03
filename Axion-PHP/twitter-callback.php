@@ -1,11 +1,12 @@
 <?php
+session_start();
+
 require "vendor/autoload.php";
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
-session_start();
 
 $consumerKey = $_ENV['CONSUMER_KEY'];
 $consumerSecret = $_ENV['CONSUMER_SECRET'];
@@ -56,6 +57,11 @@ $secret = $access_token['oauth_token_secret'];
 // $name = $user->name;
 // $profile_image = $user->profile_image_url_https;
 // $email = isset($user->email) ? $user->email : null;
+
+echo 'pre';
+print_r($_SESSION);
+print_r($_GET);
+echo "</pre>";
 
 // Connect to MySQL
 $conn = new mysqli("localhost", "root", "", "axion_bookmarks");
