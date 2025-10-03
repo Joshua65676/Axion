@@ -1,14 +1,34 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import React from "react"
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const isLoggedIn = sessionStorage.getItem("screen_name");
+  const [loading, setLoading] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
-  }
+  useEffect(() => {
+    fetch("http://localhost/axion/Axion-PHP/check-login.php", {
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn && data.username) {
+          sessionStorage.setItem("screen_name", data.username);
+          setLoggedIn(true);
+        } else {
+          setLoggedIn(false);
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoggedIn(false);
+        setLoading(false);
+      });
+  }, []);
 
-  return children;
+  if (loading) return <div>Loading...</div>;
+  if (!loggedIn) return <Navigate to="/login" replace />;
+
+  return <>{children}</>;
 }
 
 export default ProtectedRoute;

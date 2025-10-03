@@ -11,6 +11,10 @@
   --color-ParagraphGray: rgba(0, 0, 0, 0.5);
   --color-BgParagraph: rgba(143, 191, 250, 0.15);
   --color-TextGray: rgba(0, 0, 0, 0.6);
+  --color-UnreadBg: rgba(224, 36, 94, 0.15);
+  --color-UnreadText: rgba(224, 36, 94, 1);
+  --color-BookmarkBg: rgba(143, 191, 250, 0.15);
+  --color-BookmarkText: rgba(29, 161, 242, 1);
 }
 
 

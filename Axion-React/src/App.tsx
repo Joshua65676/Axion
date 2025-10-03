@@ -25,7 +25,7 @@ function App() {
             path="/home"
             element={
               <ProtectedRoute>
-                <section className="flex justify-center items-center text-center h-screen pl-[40rem]">
+                <section className="top-[5rem] left-[18.8rem] px-[30px] py-[20px] w-[76.6rem] fixed">
                   <Home />
                 </section>
               </ProtectedRoute>

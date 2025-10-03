@@ -8,7 +8,10 @@ import Search from './Search.svg';
 import Setting from './Setting.svg';
 import SignOut from './SignOut.svg';
 import Arrow from './Arrow.svg';
-import ConnectIcon from './ConnectAcc.svg'
+import ConnectIcon from './ConnectAcc.svg';
+import Unread from './unread.svg';
+import BookmarkBold from './bookmark-bold.svg';
+import ArrowDown from './arrow-down.svg'
 
 export {
     Vector,
@@ -21,5 +24,8 @@ export {
     Search,
     Arrow,
     SignOut,
-    ConnectIcon
+    ConnectIcon,
+    Unread,
+    BookmarkBold,
+    ArrowDown
 };
