@@ -7,7 +7,7 @@ import Account from "../Account/Account";
 
 const Menu: React.FC = () => {
   return (
-    <section className="container max-w-6xl mx-auto w-full p-4 px-10 fixed left-0 top-0 h-screen">
+    <section className="container max-w-6xl mx-auto w-full p-4 px-10 fixed left-0 top-0 h-screen z-60">
       <main className="flex flex-col absolute top-12 gap-5">
         {/* Logo and Icon */}
         <main className="flex flex-row justify-between ">

@@ -1,26 +1,24 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "../ui/Button";
 
 const EmptyBookmark: React.FC = () => {
   return (
-    <main>
-      <section>
-
+    <>
+      <section className="flex flex-col gap-8 justify-center items-center py-10">
+        <h2 className="text-TextColor text-[20px] leading-[100%] tracking-[-0.5%] font-semibold">
+          Go to your Twitter Bookmarks and save them with Axion.
+        </h2>
+        <Link to="https://twitter.com/i/bookmarks" target="_blank" className="">
+          <Button className="w-[18rem] bg-BlueHover hover:bg-BookmarkText">
+            <span className="text-WhiteGray leading-[20px]">
+              Open Your Twitter Bookmarks
+            </span>
+          </Button>
+        </Link>
       </section>
-    </main>
-  )
-}
+    </>
+  );
+};
 
-export default EmptyBookmark
-
-{/* <div className="bg-blue-100 p-4 rounded">
-            <p className="text-lg">
-              📌 Go to your Twitter Bookmarks and save them with Axion.
-            </p>
-            <Link
-              to="https://twitter.com/i/bookmarks"
-              target="_blank"
-              className="text-blue-600 underline"
-            >
-              Open Twitter Bookmarks
-            </Link>
-          </div> */}
+export default EmptyBookmark;
