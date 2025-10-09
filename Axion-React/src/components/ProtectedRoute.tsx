@@ -13,6 +13,9 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
       .then(data => {
         if (data.loggedIn && data.username) {
           sessionStorage.setItem("screen_name", data.username);
+          if (data.user_id) {
+            sessionStorage.setItem("user_id", data.user_id);
+          }
           setLoggedIn(true);
         } else {
           setLoggedIn(false);

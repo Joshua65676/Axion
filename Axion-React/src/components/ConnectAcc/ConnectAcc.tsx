@@ -28,12 +28,15 @@ const ConnectAcc: React.FC = () => {
   // }, []);
 
   useEffect(() => {
+     console.log("useEffect running");
     fetch("http://localhost/axion/Axion-PHP/check-login.php")
       .then((res) => res.json())
       .then((data) => {
+        console.log("Response:", data);
         if (data.loggedIn) {
           sessionStorage.setItem("loggedIn", "true");
-          sessionStorage.setItem("screen_name", data.screen_name);
+          sessionStorage.setItem("user_id", data.user_id);
+          sessionStorage.setItem("screen_name", data.username);
           navigate("/home");
         }
       });

@@ -1,8 +1,8 @@
 <?php
+session_start();
 header("Access-Control-Allow-Origin: http://localhost:5173"); // React origin
 header("Access-Control-Allow-Credentials: true"); // Allow cookies
 header("Content-Type: application/json");
-session_start();
 
 // ✅ Check if session is active
 if (!isset($_SESSION['user_id'])) {
@@ -30,6 +30,7 @@ try {
   if ($result) {
     echo json_encode([
       "loggedIn" => true,
+      "user_id" => $user_id,
       "username" => $result['screen_name']
     ]);
   } else {
