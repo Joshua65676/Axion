@@ -27,17 +27,17 @@ const ConnectAcc: React.FC = () => {
   //     });
   // }, []);
 
-useEffect(() => {
-  fetch("http://localhost/axion/Axion-PHP/check-login.php")
-    .then(res => res.json())
-    .then(data => {
-      if (data.loggedIn) {
-        sessionStorage.setItem("loggedIn", "true");
-        sessionStorage.setItem("screen_name", data.screen_name);
-        navigate("/home");
-      }
-    });
-}, []);
+  useEffect(() => {
+    fetch("http://localhost/axion/Axion-PHP/check-login.php")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.loggedIn) {
+          sessionStorage.setItem("loggedIn", "true");
+          sessionStorage.setItem("screen_name", data.screen_name);
+          navigate("/home");
+        }
+      });
+  }, []);
 
   return (
     <section className="container max-w-6xl mx-auto w-full">

@@ -26,7 +26,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if (!loggedIn) return <Navigate to="/login" replace />;
+  if (!loggedIn) return <Navigate to="/" replace />;
 
   return <>{children}</>;
 }

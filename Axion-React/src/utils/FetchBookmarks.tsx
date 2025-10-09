@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import EmptyBookmark from "../components/Bookmark/EmptyBookmark";
 
+export interface Bookmark {
+  tweet_text: string
+}
+
  export function useFetchBookmarks() {
   const [bookmarksUI, setBookmarksUI] = useState<React.ReactNode | null>(null);
 
@@ -21,10 +25,10 @@ import EmptyBookmark from "../components/Bookmark/EmptyBookmark";
         } else {
           setBookmarksUI(
             <div>
-              <h2 className="text-xl font-semibold">Your Bookmarks</h2>
+              <h2 className="text-xl font-semibold text-Black">Your Bookmarks</h2>
               <ul className="list-disc pl-6 space-y-1">
-                {bookmarks.map((bm: any, i: number) => (
-                  <li key={i}>{bm.tweet_text}</li>
+                {bookmarks.map((bm: Bookmark, i: number) => (
+                  <li key={i} className="text-TextColor">{bm.tweet_text}</li>
                 ))}
               </ul>
             </div>
