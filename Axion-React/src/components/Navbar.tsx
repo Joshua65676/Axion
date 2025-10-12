@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import SearchButton from "./ui/SearchButton";
 import Notification from "./ui/Notification";
+import ConnectExtension from "./Extension/ConnectExtension";
 
 const Navbar: React.FC = () => {
   const [stickyClass, setStickyClass] = useState<boolean>(false);
@@ -25,10 +26,11 @@ const Navbar: React.FC = () => {
     >
       <section className="container max-w-6xl mx-auto w-full">
         <main className="pl-40 p-4 flex flex-row justify-between">
-          <div className="flex flex-row justify-between container max-w-6xl mx-auto w-full">
+          <div className="flex flex-row justify-between w-full">
             <SearchButton />
-            <div className="">
+            <div className="flex flex-row gap-8 relative right-0 left-[9rem]">
               <Notification />
+              <ConnectExtension />
             </div>
           </div>
           <div className="absolute bg-BorderGray left-[18.8rem] right-0 top-[5rem] h-px"></div>

@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
 
-file_put_contents('debug_log.txt', $raw); // Logs raw JSON
-file_put_contents('decoded_log.txt', print_r($data, true)); // Logs decoded array
+// file_put_contents('debug_log.txt', $raw); // Logs raw JSON
+// file_put_contents('decoded_log.txt', print_r($data, true)); // Logs decoded array
 
 if (!$data || !isset($data['user_id']) || !isset($data['bookmarks']) || !is_array($data['bookmarks'])) {
     echo json_encode(['status' => 'error', 'message' => 'Invalid or missing data']);

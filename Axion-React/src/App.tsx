@@ -25,7 +25,7 @@ function App() {
             path="/home"
             element={
               <ProtectedRoute>
-                <section className="relative left-[18.8rem] px-[30px] py-[20px] w-[75rem] ">
+                <section className="relative left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
                   <Home />
                 </section>
               </ProtectedRoute>

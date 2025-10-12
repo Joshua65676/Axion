@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ConnectIcon } from "../../assets";
 import TwitterAuth from "./TwitterAuth";
 import { Button } from "../ui/Button";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const ConnectAcc: React.FC = () => {
   const [showAuth, setShowAuth] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleCancel = () => {
     setShowAuth(false);
@@ -27,20 +27,19 @@ const ConnectAcc: React.FC = () => {
   //     });
   // }, []);
 
-  useEffect(() => {
-     console.log("useEffect running");
-    fetch("http://localhost/axion/Axion-PHP/check-login.php")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Response:", data);
-        if (data.loggedIn) {
-          sessionStorage.setItem("loggedIn", "true");
-          sessionStorage.setItem("user_id", data.user_id);
-          sessionStorage.setItem("screen_name", data.username);
-          navigate("/home");
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost/axion/Axion-PHP/check-login.php")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("Response:", data);
+  //       if (data.loggedIn && data.username && data.user_id) {
+  //         sessionStorage.setItem("loggedIn", "true");
+  //         sessionStorage.setItem("user_id", data.user_id);
+  //         sessionStorage.setItem("screen_name", data.username);
+  //         navigate("/home");
+  //       }
+  //     });
+  // }, []);
 
   return (
     <section className="container max-w-6xl mx-auto w-full">

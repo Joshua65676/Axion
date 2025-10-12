@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { checkExtensionInstalled } from "../utils/extension";
 import { Unread, BookmarkBold } from "../assets";
 import BookmarkFilter from "./Bookmark/BookmarkFilter";
-import ExtensionNotInstall from "./Bookmark/ExtensionNotInstall";
+import ExtensionNotInstall from "./Extension/ExtensionNotInstall";
 import { useFetchBookmarks } from "../utils/FetchBookmarks";
 
 const Home: React.FC = () => {
@@ -50,10 +50,10 @@ const Home: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex flex-col w-[313px] h-[143px] border border-BookmarkText rounded-3xl p-[20px] gap-3 bg-BookmarkBg">
+            <div className="flex flex-col w-[313px] h-[143px] border border-BgBlue rounded-3xl p-[20px] gap-3 bg-BgParagraph">
               <div className="flex flex-row gap-[3px]">
                 <img src={BookmarkBold} alt="bookmark icon" />
-                <span className="text-[14px] font-normal leading-[125%] tracking-[-0.5%] text-BookmarkText">
+                <span className="text-[14px] font-normal leading-[125%] tracking-[-0.5%] text-BgBlue">
                   Bookmarks
                 </span>
               </div>

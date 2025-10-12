@@ -7,15 +7,23 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     fetch("http://localhost/axion/Axion-PHP/check-login.php", {
-      credentials: "include"
+      credentials: "include",
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.loggedIn && data.username) {
           sessionStorage.setItem("screen_name", data.username);
           if (data.user_id) {
             sessionStorage.setItem("user_id", data.user_id);
           }
+          // chrome.runtime.sendMessage({
+          //   type: "SET_USER",
+          //   user: {
+          //     screen_name: data.username,
+          //     user_id: data.user_id,
+          //   },
+          // });
+
           setLoggedIn(true);
         } else {
           setLoggedIn(false);
@@ -29,7 +37,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if (!loggedIn) return <Navigate to="/" replace />;
+  if (!loading && !loggedIn) return <Navigate to="/" replace />;
 
   return <>{children}</>;
 }
