@@ -12,7 +12,9 @@ import ConnectIcon from './ConnectAcc.svg';
 import Unread from './unread.svg';
 import BookmarkBold from './bookmark-bold.svg';
 import ArrowDown from './arrow-down.svg';
-import Time from './time.svg'
+import Time from './time.svg';
+import CheckMark from './check-mark.svg';
+import BackArrow from './back.svg'
 
 export {
     Vector,
@@ -29,5 +31,7 @@ export {
     Unread,
     BookmarkBold,
     ArrowDown,
-    Time
+    Time,
+    CheckMark,
+    BackArrow
 };

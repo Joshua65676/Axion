@@ -3,12 +3,11 @@ import { checkExtensionInstalled } from "../utils/extension";
 import { Unread, BookmarkBold } from "../assets";
 import BookmarkFilter from "./Bookmark/BookmarkFilter";
 import ExtensionNotInstall from "./Extension/ExtensionNotInstall";
-import { useFetchBookmarks } from "../utils/FetchBookmarks";
+import BookmarksScreen from "./Bookmark/BookmarkScreen";
 
 const Home: React.FC = () => {
   const [extensionInstalled, setExtensionInstalled] = useState(false);
   const [loading, setLoading] = useState(true);
-  const bookmarksUI = useFetchBookmarks();
 
   useEffect(() => {
     checkExtensionInstalled().then((installed) => {
@@ -71,10 +70,9 @@ const Home: React.FC = () => {
         {!extensionInstalled ? (
           <div className="">
             <ExtensionNotInstall />
-            {/* <EmptyBookmark /> */}
           </div>
         ) : (
-          bookmarksUI
+          <BookmarksScreen />
         )}
       </section>
     </main>

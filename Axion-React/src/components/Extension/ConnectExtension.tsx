@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { checkExtensionInstalled } from "../../utils/extension";
-import ExtensionNotInstall from "./ExtensionNotInstall";
 import ConnectButton from "./ConnectButton";
+import ExtensionNotInstallButton from "./ExtensionNotInstallButton";
 
 const ConnectExtension: React.FC = () => {
   const [isInstalled, setIsInstalled] = useState(false);
@@ -16,7 +16,7 @@ const ConnectExtension: React.FC = () => {
     <main>
       {!isInstalled ? (
         <div>
-          <ExtensionNotInstall />
+          <ExtensionNotInstallButton />
         </div>
       ) : (
         <div>
