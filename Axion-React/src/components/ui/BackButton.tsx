@@ -1,11 +1,17 @@
 import React from "react";
 import { BackArrow } from "../../assets";
 
-const BackButton: React.FC = () => {
+interface Props {
+  onClick: () => void;
+}
+
+const BackButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <main className="">
-      <img src={BackArrow} alt="back" />
-    </main>
+    <>
+      <button onClick={onClick} className="">
+        <img src={BackArrow} alt="back arrow" />
+      </button>
+    </>
   );
 };
 

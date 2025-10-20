@@ -1,18 +1,21 @@
 import React from "react";
 import { Button } from "./Button";
+import { Link } from "react-router-dom";
+import type { Bookmark } from "../../utils/FetchBookmarks";
 
-interface ViewButtonProps {
-    onView: () => void;
+interface Props {
+  tweet: Bookmark;
 }
-
-const View: React.FC<ViewButtonProps> = ({ onView }) => {
+const View: React.FC<Props> = ({ tweet }) => {
   return (
     <>
-      <section className="">
-        <Button onClick={onView} className="bg-ViewButton w-[142px] h-[40px] text-center hover:bg-BlueHover">
-          <span className="text-[12px] font-medium leading-[15px] tracking-[0px] text-White">View</span>
+      <Link to={`/${tweet.username}/tweet/${tweet.tweet_id}`} state={{ tweet }}>
+        <Button className="bg-ViewButton w-[142px] h-[40px] text-center hover:bg-BlueHover">
+          <span className="text-[12px] font-medium leading-[15px] tracking-[0px] text-White">
+            View
+          </span>
         </Button>
-      </section>
+      </Link>
     </>
   );
 };

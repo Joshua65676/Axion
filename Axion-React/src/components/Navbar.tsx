@@ -18,13 +18,13 @@ const Navbar: React.FC = () => {
   }, []);
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50  ${
+      className={`fixed top-0 left-[18.8rem] right-0 z-50  ${
         stickyClass
           ? "bg-GrayBg backdrop-blur-sm border border-slate-300 shadow-md"
           : ""
       }`}
     >
-      <section className="container max-w-6xl mx-auto w-full">
+      <section className="container max-w-6xl mx-auto w-full relative left-[-10rem] right-0">
         <main className="pl-40 p-4 flex flex-row justify-between">
           <div className="flex flex-row justify-between w-full">
             <SearchButton />
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
               <ConnectExtension />
             </div>
           </div>
-          <div className="absolute bg-BorderGray left-[18.8rem] right-0 top-[5rem] h-px"></div>
+          <div className="absolute bg-BorderGray left-[8rem] right-[-13rem] top-[5rem] h-px"></div>
         </main>
       </section>
     </nav>

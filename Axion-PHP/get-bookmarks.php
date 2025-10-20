@@ -15,7 +15,7 @@ try {
   $pdo = new PDO("mysql:host=localhost;dbname=axion_bookmarks", "root", "");
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $stmt = $pdo->prepare("SELECT tweet_text, username, profile_pic, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+  $stmt = $pdo->prepare("SELECT tweet_id, tweet_text, username, profile_pic, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
   FROM bookmarks
   WHERE user_id = ?");
   $stmt->execute([$user_id]);

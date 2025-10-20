@@ -2,7 +2,7 @@ import { Home, Bookmark, Search, Setting } from '../assets'
 
 export const MenuListItems = [
     {id: 'item-1',  icons: Home, itemsName: 'Home', path: '/home'},
-    {id: 'item-2',  icons: Bookmark, itemsName: 'All Bookmarks', path: '/bookmarks'},
+    {id: 'item-2',  icons: Bookmark, itemsName: 'All Bookmarks', path: '/allbookmarks'},
     {id: 'item-3',  icons: Search, itemsName: 'Search', path: '/search'},
     {id: 'item-4',  icons: Search, itemsName: 'Category', path: '/category'},
     {id: 'item-5',  icons: Setting, itemsName: 'Reminder Settings', path: '/settings'}

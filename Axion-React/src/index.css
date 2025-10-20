@@ -22,6 +22,32 @@
   --color-Techbg: rgba(29, 161, 242, 0.13);
   --color-TechBorder: rgba(29, 161, 242, 0.33);
   --color-ViewButton: rgba(68, 160, 246, 1);
+
+  --animate-slide-in: slide-in 0.3s ease-out forwards;
+  --animate-slide-out: slide-out 0.3s ease-in forwards;
+
+  @keyframes slide-in {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
 }
 
 
