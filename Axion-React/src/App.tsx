@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import TweetDetails from "./components/View/TweetDetails";
 import AllBookmark from "./components/AllBookmark";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             path="/home"
             element={
               <ProtectedRoute>
-                <section className="relative left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
                   <Home />
                 </section>
               </ProtectedRoute>
@@ -38,7 +39,7 @@ function App() {
             path="/:username/tweet/:tweet_id"
             element={
               <ProtectedRoute>
-                <section className="relative left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
                   <TweetDetails />
                 </section>
               </ProtectedRoute>
@@ -49,8 +50,30 @@ function App() {
             path="/allbookmarks"
             element={
               <ProtectedRoute>
-                <section className="relative left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
                   <AllBookmark />
+                </section>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/search"
+            element={
+              <ProtectedRoute>
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                  <Search />
+                </section>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/search/:keyword"
+            element={
+              <ProtectedRoute>
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                  <Search />
                 </section>
               </ProtectedRoute>
             }
