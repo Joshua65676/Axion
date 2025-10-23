@@ -15,12 +15,21 @@ try {
   $pdo = new PDO("mysql:host=localhost;dbname=axion_bookmarks", "root", "");
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $stmt = $pdo->prepare("SELECT tweet_id, tweet_text, username, profile_pic, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
-  FROM bookmarks
-  WHERE user_id = ?");
-  $stmt->execute([$user_id]);
-  $bookmarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $category = $_GET['category'] ?? null;
 
+  if ($category) {
+    $stmt = $pdo->prepare("SELECT tweet_id, tweet_text, username, profile_pic, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+      FROM bookmarks
+      WHERE user_id = ? AND category = ?");
+    $stmt->execute([$user_id, $category]);
+  } else {
+    $stmt = $pdo->prepare("SELECT tweet_id, tweet_text, username, profile_pic, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+      FROM bookmarks
+      WHERE user_id = ?");
+    $stmt->execute([$user_id]);
+  }
+
+  $bookmarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode(["bookmarks" => $bookmarks]);
 } catch (PDOException $e) {
   echo json_encode(["error" => "Database error"]);

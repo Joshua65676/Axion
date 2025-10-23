@@ -14,7 +14,7 @@ const ExtensionNotInstall: React.FC = () => {
           target="_blank"
           className=""
         >
-          <Button className="w-[15rem] bg-BlueHover hover:bg-BookmarkText">
+          <Button className="w-[15rem] bg-BlueHover hover:bg-BookmarkText border-none">
             <span className="text-WhiteGray leading-[20px]">Install Axion Extension</span>
           </Button>
         </Link>

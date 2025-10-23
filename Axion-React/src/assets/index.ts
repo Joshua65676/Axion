@@ -14,7 +14,8 @@ import BookmarkBold from './bookmark-bold.svg';
 import ArrowDown from './arrow-down.svg';
 import Time from './time.svg';
 import CheckMark from './check-mark.svg';
-import BackArrow from './back.svg'
+import BackArrow from './back.svg';
+import Cross  from './cross.svg';
 
 export {
     Vector,
@@ -33,5 +34,6 @@ export {
     ArrowDown,
     Time,
     CheckMark,
-    BackArrow
+    BackArrow,
+    Cross
 };

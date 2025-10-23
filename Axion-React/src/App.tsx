@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import TweetDetails from "./components/View/TweetDetails";
 import AllBookmark from "./components/AllBookmark";
 import Search from "./components/Search";
+import Category from "./components/Category";
 
 function App() {
   return (
@@ -74,6 +75,28 @@ function App() {
               <ProtectedRoute>
                 <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
                   <Search />
+                </section>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/category"
+            element={
+              <ProtectedRoute>
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                  <Category />
+                </section>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/category/:name"
+            element={
+              <ProtectedRoute>
+                <section className="absolute top-0 left-[18.8rem] px-[30px] py-[20px] w-[75rem] pt-[6rem]">
+                  <Category />
                 </section>
               </ProtectedRoute>
             }
