@@ -20,6 +20,7 @@ export interface Bookmark {
 export function useFetchBookmarks() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [loading, setLoading] = useState(true);
+  const [bookmarkCount, setBookmarkCount] = useState(0);
 
   useEffect(() => {
     const user_id = sessionStorage.getItem("user_id");
@@ -33,6 +34,9 @@ export function useFetchBookmarks() {
       .then((data) => {
         setBookmarks(data.bookmarks || []);
         setLoading(false);
+        if(Array.isArray(data.bookmarks)) {
+          setBookmarkCount(data.bookmarks.length);
+        }
       })
       .catch((err) => {
         console.error("Failed to fetch bookmarks:", err);
@@ -40,5 +44,5 @@ export function useFetchBookmarks() {
       });
   }, []);
 
-  return { bookmarks, loading };
+  return { bookmarks, loading, bookmarkCount };
 }

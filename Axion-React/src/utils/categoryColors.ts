@@ -9,7 +9,8 @@ const categoryColors: Record<string, string> = {
   science: "",
   betting: "",
   gaming: "",
-  uncategorized: "bg-gray-200 text-gray-800 border border-gray-400"
+  uncategorized: "bg-gray-200 text-gray-800 border border-gray-400",
+  default: "bg-default text-gray-800 border border-BgBlue",
 };
 
 export default categoryColors;

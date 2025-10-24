@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
-import LogOut from "./LogOut";
+import LogOut from "./LogOutButton";
 
 const Account: React.FC = () => {
   return (

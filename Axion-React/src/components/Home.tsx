@@ -4,10 +4,12 @@ import { Unread, BookmarkBold } from "../assets";
 import BookmarkFilter from "./Bookmark/BookmarkFilter";
 import ExtensionNotInstall from "./Extension/ExtensionNotInstall";
 import BookmarksScreen from "./Bookmark/BookmarkScreen";
+import { useFetchBookmarks } from "../utils/FetchBookmarks";
 
 const Home: React.FC = () => {
   const [extensionInstalled, setExtensionInstalled] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { bookmarkCount } = useFetchBookmarks();
 
   useEffect(() => {
     checkExtensionInstalled().then((installed) => {
@@ -57,7 +59,7 @@ const Home: React.FC = () => {
                 </span>
               </div>
               <span className="text-[32px] font-normal leading-[100%] tracking-[-0.5%] text-Black">
-                0
+                {bookmarkCount}
               </span>
             </div>
           </section>

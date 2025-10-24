@@ -6,7 +6,11 @@ interface Props {
   onUpdated: () => void;
 }
 
-const EditCategory: React.FC<Props> = ({ tweet_id, currentCategory, onUpdated }) => {
+const EditCategory: React.FC<Props> = ({
+  tweet_id,
+  currentCategory,
+  onUpdated,
+}) => {
   const [editing, setEditing] = useState(false);
   const [newCategory, setNewCategory] = useState(currentCategory);
 
@@ -37,7 +41,7 @@ const EditCategory: React.FC<Props> = ({ tweet_id, currentCategory, onUpdated })
             title="update category"
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
-            className="border px-2 py-1 rounded-[20px] w-[7rem]"
+            className="border px-2 py-1 rounded-[20px] w-[7rem] flex flex-row"
           />
           <button
             onClick={handleUpdate}
@@ -57,13 +61,17 @@ const EditCategory: React.FC<Props> = ({ tweet_id, currentCategory, onUpdated })
         </div>
       ) : (
         <>
-          <span className="text-[12px] font-medium text-center text-Black">{currentCategory}</span>
-          <button
-            onClick={() => setEditing(true)}
-            className="text-blue-600 text-sm"
-          >
-            ✏️
-          </button>
+          <span className="text-[12px] font-medium text-center text-Black flex flex-row">
+            {currentCategory}
+          </span>
+          <div className="">
+            <button
+              onClick={() => setEditing(true)}
+              className="text-blue-600 text-sm"
+            >
+              ✏️
+            </button>
+          </div>
         </>
       )}
     </div>

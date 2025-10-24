@@ -21,12 +21,12 @@ const Category: React.FC = () => {
   return (
     <main className="container max-w-6xl mx-auto w-full">
       <section className="flex flex-col gap-10">
-        <div className="flex flex-col justify-between gap-8">
-          <span className="text-lg text-Black leading-[20px] tracking-0 font-medium">
-            Category
-          </span>
+        <div className="flex flex-col justify-between gap-5">
+          <div className="flex flex-row justify-between items-center text-center">
+            <span className="text-lg text-Black leading-[20px] tracking-0 font-medium">
+              Category
+            </span>
 
-          <div className="flex gap-2 mb-6 flex-wrap">
             <button
               className={`px-3 py-1 rounded ${
                 selectedCategory === null
@@ -37,9 +37,13 @@ const Category: React.FC = () => {
             >
               All
             </button>
+          </div>
 
+          <div className="flex gap-2 mb-6 flex-wrap">
             {selectedCategory ? (
-              `Category: ${selectedCategory}`
+              <div className="bg-default text-BgBlue text-[14px] text-center py-[10px] px-[12px] font-medium leading-[125%] tracking-[-0.5%] border border-BgBlue rounded-[20px] w-[8rem] h-[40px]">
+                {selectedCategory}
+              </div>
             ) : (
               <div className="flex flex-row gap-4">
                 {categories.map((cat, i) => (
