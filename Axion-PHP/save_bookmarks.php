@@ -39,33 +39,37 @@ foreach ($bookmarks as $tweet) {
         continue;
     }
 
-    $tweet_id    = $conn->real_escape_string($tweet['tweet_id']);
-    $tweet_text  = $conn->real_escape_string($tweet['tweet_text']);
-    $category    = $conn->real_escape_string($tweet['category']);
-    $username    = isset($tweet['username']) ? $conn->real_escape_string($tweet['username']) : '';
-    $profile_pic = isset($tweet['profilePic']) ? $conn->real_escape_string($tweet['profilePic']) : '';
-    $media       = isset($tweet['media']) ? $conn->real_escape_string(json_encode($tweet['media'])) : '';
-    $video       = isset($tweet['video']) ? $conn->real_escape_string($tweet['video']) : '';
-    $comments    = isset($tweet['comments']) ? $conn->real_escape_string($tweet['comments']) : '';
-    $retweets    = isset($tweet['retweets']) ? $conn->real_escape_string($tweet['retweets']) : '';
-    $likes       = isset($tweet['likes']) ? $conn->real_escape_string($tweet['likes']) : '';
-    $views       = isset($tweet['views']) ? $conn->real_escape_string($tweet['views']) : '';
-    $is_verified = isset($tweet['is_verified']) ? (int) $tweet['is_verified'] : 0;
-    $stickers    = isset($tweet['stickers']) ? $conn->real_escape_string(json_encode($tweet['stickers'])) : '';
-    $timestamp   = date("Y-m-d H:i:s");
+    $tweet_id     = $conn->real_escape_string($tweet['tweet_id']);
+    $tweet_text   = $conn->real_escape_string($tweet['tweet_text']);
+    $category     = $conn->real_escape_string($tweet['category']);
+    $username     = isset($tweet['username']) ? $conn->real_escape_string($tweet['username']) : '';
+    $display_name = isset($tweet['display_name']) ? $conn->real_escape_string($tweet['display_name']) : '';
+    $tweet_url    = isset($tweet['tweet_url']) ? $conn->real_escape_string($tweet['tweet_url']) : '';
+    $profile_pic  = isset($tweet['profilePic']) ? $conn->real_escape_string($tweet['profilePic']) : '';
+    $media        = isset($tweet['media']) ? $conn->real_escape_string(json_encode($tweet['media'])) : '';
+    $video        = isset($tweet['video']) ? $conn->real_escape_string($tweet['video']) : '';
+    $comments     = isset($tweet['comments']) ? $conn->real_escape_string($tweet['comments']) : '';
+    $retweets     = isset($tweet['retweets']) ? $conn->real_escape_string($tweet['retweets']) : '';
+    $likes        = isset($tweet['likes']) ? $conn->real_escape_string($tweet['likes']) : '';
+    $views        = isset($tweet['views']) ? $conn->real_escape_string($tweet['views']) : '';
+    $is_verified  = isset($tweet['is_verified']) ? (int) $tweet['is_verified'] : 0;
+    $stickers     = isset($tweet['stickers']) ? $conn->real_escape_string(json_encode($tweet['stickers'])) : '';
+    $timestamp    = date("Y-m-d H:i:s");
 
     $sql = "INSERT INTO bookmarks (
-            user_id, tweet_id, username, profile_pic, tweet_text,
+            user_id, tweet_id, username, display_name, tweet_url, profile_pic, tweet_text,
             media, video, comments, retweets, likes, views,
             category, is_verified, stickers, created_at, updated_at
         ) VALUES (
-            '$user_id', '$tweet_id', '$username', '$profile_pic', '$tweet_text',
+            '$user_id', '$tweet_id', '$username', '$display_name', '$tweet_url', '$profile_pic', '$tweet_text',
             '$media', '$video', '$comments', '$retweets', '$likes', '$views',
             '$category', '$is_verified', '$stickers', '$timestamp', '$timestamp'
         )
         ON DUPLICATE KEY UPDATE
             tweet_text = '$tweet_text',
             username = '$username',
+            display_name = '$display_name',
+            tweet_url = '$tweet_url',
             profile_pic = '$profile_pic',
             media = '$media',
             video = '$video',
