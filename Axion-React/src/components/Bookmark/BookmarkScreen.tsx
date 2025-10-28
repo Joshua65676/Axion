@@ -40,7 +40,13 @@ const BookmarksScreen: React.FC = () => {
                     </span>
                   </div>
                   <div className="flex gap-1">
-                    <img src={bm.profile_pic} alt="ProfilePic" />
+                    {bm.profilePic && (
+                      <img
+                        src={bm.profilePic}
+                        alt="Profile"
+                        className="w-10 h-10 rounded-full mb-2"
+                      />
+                    )}
                     <span className="text-[14px] text-TextGray">
                       @{bm.username}
                     </span>

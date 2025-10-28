@@ -33,7 +33,7 @@ if ($user_id) {
 // Search tweets by username or category
 $likeTerm = '%' . $term . '%';
 $stmt = $conn->prepare("
-  SELECT * FROM bookmarks
+  SELECT * FROM bookmark
   WHERE username LIKE ? OR category LIKE ?
 ");
 $stmt->bind_param("ss", $likeTerm, $likeTerm);

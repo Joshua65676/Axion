@@ -49,11 +49,13 @@ const TweetDetails = () => {
             </div>
             {/* Profile Pics and username */}
             <div className="flex items-center gap-3">
-              <img
-                src={tweet.profile_pic}
-                alt="Profile"
-                className="w-10 h-10 rounded-full"
-              />
+              {tweet.profilePic && (
+                <img
+                  src={tweet.profilePic}
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full mb-2"
+                />
+              )}
               {tweet.is_verified && <span className="text-blue-500">✔️</span>}
               <span className="text-[14px] text-TextGray">
                 @{tweet.username}
@@ -82,18 +84,24 @@ const TweetDetails = () => {
               {/* Line */}
               <div className="bg-BorderGray h-px"></div>
               <div className="flex flex-row gap-4">
-                <span className="text-Black text-[14px] font-semibold">{tweet.retweets} <span className="text-ParagraphGray font-normal">Repost</span></span>
-                <span className="text-Black text-[14px] font-semibold">{tweet.likes} <span className="text-ParagraphGray font-normal">Likes</span></span>
+                <span className="text-Black text-[14px] font-semibold">
+                  {tweet.retweets}{" "}
+                  <span className="text-ParagraphGray font-normal">Repost</span>
+                </span>
+                <span className="text-Black text-[14px] font-semibold">
+                  {tweet.likes}{" "}
+                  <span className="text-ParagraphGray font-normal">Likes</span>
+                </span>
               </div>
             </div>
 
             <div className="flex flex-col gap-5">
               {/* Line */}
               <div className="bg-BorderGray h-px"></div>
-               {/* Buttons */}
+              {/* Buttons */}
               <div className="flex flex-row gap-8">
                 <MarkBookmark2 />
-                <TwitterLink />
+                <TwitterLink url={tweet.tweet_url} />
               </div>
             </div>
           </section>

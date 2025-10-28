@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import type { Tweet } from "./useFetchTweet";
+import type { Tweet } from "./useFetchTweet"; 
+import { parseTweetMedia } from "./parseTweetMedia";
+
+interface BookmarkResponse {
+  bookmark: Tweet[];
+}
 
 export const useFetchBookmarks = (category: string | null) => {
   const [bookmarks, setBookmarks] = useState<Tweet[]>([]);
@@ -11,7 +16,15 @@ export const useFetchBookmarks = (category: string | null) => {
 
     fetch(url, { credentials: "include" })
       .then((res) => res.json())
-      .then((data) => setBookmarks(data.bookmarks))
+      .then((data: BookmarkResponse) => {
+        const enriched = data.bookmark.map((tweet) => ({
+          ...tweet,
+          profilePic: tweet.profile_pic || "",
+          ...parseTweetMedia(tweet.media || []),
+        }));
+
+        setBookmarks(enriched);
+      })
       .catch(() => setBookmarks([]));
   };
 

@@ -11,7 +11,7 @@ if (!$user_id) {
   exit;
 }
 
-$stmt = $conn->prepare("SELECT DISTINCT category FROM bookmarks WHERE user_id = ?");
+$stmt = $conn->prepare("SELECT DISTINCT category FROM bookmark WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();

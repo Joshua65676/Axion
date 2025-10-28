@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { parseTweetMedia } from "./parseTweetMedia";
 
 export interface Tweet {
   tweet_id: number;
   username: string;
   tweet_text: string;
+  tweet_url: string;
   category: string;
   created_at: string;
   profile_pic: string;
@@ -13,6 +15,9 @@ export interface Tweet {
   retweets: number;
   comments: number;
   is_verified: boolean;
+  profilePic?: string;
+  tweetImages?: string[];
+  tweetVideos?: string[];
 }
 
 export const useFetchTweet = (tweet_id: string | undefined) => {
@@ -28,7 +33,12 @@ export const useFetchTweet = (tweet_id: string | undefined) => {
         if (data.error) {
           setTweet(null);
         } else {
-          setTweet(data);
+          const enriched = {
+            ...data,
+            profilePic: data.profile_pic,
+            ...parseTweetMedia(data.media),
+          };
+          setTweet(enriched);
         }
         setLoading(false);
       })

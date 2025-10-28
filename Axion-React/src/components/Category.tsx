@@ -103,7 +103,13 @@ const Category: React.FC = () => {
                       </span>
                     </div>
                     <div className="flex gap-1">
-                      <img src={tweet.profile_pic} alt="ProfilePic" />
+                      {tweet.profilePic && (
+                        <img
+                          src={tweet.profilePic}
+                          alt="Profile"
+                          className="w-10 h-10 rounded-full mb-2"
+                        />
+                      )}
                       <span className="text-[14px] text-TextGray">
                         @{tweet.username}
                       </span>

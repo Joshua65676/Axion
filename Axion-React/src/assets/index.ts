@@ -16,6 +16,8 @@ import Time from './time.svg';
 import CheckMark from './check-mark.svg';
 import BackArrow from './back.svg';
 import Cross  from './cross.svg';
+import Moon from "./moon.svg";
+import Sun from "./sun-light.svg";
 
 export {
     Vector,
@@ -35,5 +37,7 @@ export {
     Time,
     CheckMark,
     BackArrow,
-    Cross
+    Cross,
+    Moon,
+    Sun
 };

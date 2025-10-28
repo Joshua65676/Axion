@@ -15,7 +15,7 @@ if (!$user_id || !$tweet_id || !$new_category) {
   exit;
 }
 
-$stmt = $conn->prepare("UPDATE bookmarks SET category = ? WHERE tweet_id = ? AND user_id = ?");
+$stmt = $conn->prepare("UPDATE bookmark SET category = ? WHERE tweet_id = ? AND user_id = ?");
 $stmt->bind_param("sii", $new_category, $tweet_id, $user_id);
 $success = $stmt->execute();
 

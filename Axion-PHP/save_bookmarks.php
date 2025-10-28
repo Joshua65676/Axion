@@ -56,7 +56,7 @@ foreach ($bookmarks as $tweet) {
     $stickers     = isset($tweet['stickers']) ? $conn->real_escape_string(json_encode($tweet['stickers'])) : '';
     $timestamp    = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO bookmarks (
+    $sql = "INSERT INTO bookmark (
             user_id, tweet_id, username, display_name, tweet_url, profile_pic, tweet_text,
             media, video, comments, retweets, likes, views,
             category, is_verified, stickers, created_at, updated_at

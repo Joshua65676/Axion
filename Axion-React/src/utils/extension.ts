@@ -2,6 +2,7 @@
 
 interface ExtensionResponse {
   installed: boolean;
+  connected?: boolean;
 }
 
 export function checkExtensionInstalled(): Promise<boolean> {
@@ -12,9 +13,9 @@ export function checkExtensionInstalled(): Promise<boolean> {
 
     chrome.runtime.sendMessage(
       EXTENSION_ID,
-      { message: "ping" },
+      { type: "CHECK_CONNECTION" },
       (response: ExtensionResponse) => {
-        if (chrome.runtime.lastError || !response?.installed) {
+        if (chrome.runtime.lastError || !response?.installed || !response.connected) {
           resolve(false);
         } else {
           resolve(true);

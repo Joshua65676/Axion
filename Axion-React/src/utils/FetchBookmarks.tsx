@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { parseTweetMedia } from "./parseTweetMedia";
 
 export interface Bookmark {
   tweet_id: string;
   tweet_text: string;
+  tweet_url: string;
   username: string;
   profile_pic: string;
   media: string[];
@@ -15,6 +17,9 @@ export interface Bookmark {
   is_verified: boolean;
   category: string;
   created_at: string;
+  profilePic?: string;
+  tweetImages?: string[];
+  tweetVideos?: string[];
 }
 
 export function useFetchBookmarks() {
@@ -26,17 +31,32 @@ export function useFetchBookmarks() {
     const user_id = sessionStorage.getItem("user_id");
     if (!user_id) return;
 
-    fetch(`http://localhost/axion/Axion-PHP/get-bookmarks.php?user_id=${user_id}`, {
-      method: "GET",
-      credentials: "include",
-    })
+    fetch(
+      `http://localhost/axion/Axion-PHP/get-bookmarks.php?user_id=${user_id}`,
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        setBookmarks(data.bookmarks || []);
+        console.log("API response:", data);
+        const enriched = Array.isArray(data.bookmark)
+          ? data.bookmark.map((tweet: Bookmark) => ({
+              ...tweet,
+              ...parseTweetMedia(tweet.media),
+            }))
+          : [];
+
+        setBookmarks(enriched);
         setLoading(false);
-        if(Array.isArray(data.bookmarks)) {
-          setBookmarkCount(data.bookmarks.length);
-        }
+        setBookmarkCount(enriched.length);
+
+        // setBookmarks(data.bookmark || []);
+        // setLoading(false);
+        // if(Array.isArray(data.bookmark)) {
+        //   setBookmarkCount(data.bookmark.length);
+        // }
       })
       .catch((err) => {
         console.error("Failed to fetch bookmarks:", err);
