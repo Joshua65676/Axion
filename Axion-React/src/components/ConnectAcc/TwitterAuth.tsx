@@ -10,19 +10,19 @@ type TwitterAuthProps = {
 
 const TwitterAuth: React.FC<TwitterAuthProps> = ({ onCancel }) => {
   return (
-    <section className="bg-[rgba(0,0,0,0.6)] bg-opacity- absolute top-0 left-0 h-[100vh] w-[100vw] z-50 items-center justify-center flex flex-col">
-      <main className="flex flex-col gap-15 items-center justify-between w-[550px] h-[520px] bg-White py-13 pl-10 p-12 rounded-2xl shadow-md">
+    <section className="lg:bg-[rgba(0,0,0,0.6)] bg-opacity- absolute top-30 lg:absolute lg:top-0 lg:left-0 lg:h-[100vh] lg:w-[100vw] lg:z-50 items-center justify-center flex flex-col">
+      <main className="flex flex-col lg:gap-15 items-center justify-between lg:w-[550px] lg:h-[550px] lg:bg-White lg:py-13 lg:ml-20 lg:p-12 lg:rounded-2xl lg:shadow-md">
         {/* Header */}
-        <div className="text-start flex flex-col gap-6">
-          <h2 className="text-[30px] font-medium tracking-[0px] leading-[35px] text-TextColor">
+        <div className="text-start flex flex-col gap-6 pl-5 lg:pl-0 w-full ">
+          <h2 className="lg:text-[30px] text-[20px] font-medium tracking-[0px] leading-[35px] text-TextColor">
             Connect Your Twitter Account
           </h2>
-          <p className="text-[17px] text-ParagraphGray font-medium tracking-[-0.5px] leading-[25px]">
+          <p className="lg:text-[17px] text-[14px] w-[350px] lg:w- text-ParagraphGray font-medium tracking-[-0.5px] leading-[25px]">
             We need access to your bookmarks to help you manage them. Your data
             stays secure.
           </p>
           {/* Permission List */}
-          <div className="flex flex-col gap-[10px] bg-BgParagraph rounded-[20px] py-[20px] px-[15px] ">
+          <div className="flex flex-col gap-[10px] bg-BgParagraph rounded-[20px] py-[20px] px-[15px] w-[24rem] lg:w-full">
             <span className="text-ParagraphGray font-medium text-[16px] leading-[15px] tracking-[0px]">
               Permission needed:
             </span>
@@ -37,10 +37,10 @@ const TwitterAuth: React.FC<TwitterAuthProps> = ({ onCancel }) => {
         </div>
 
         {/* Authorize Button and Cancel button*/}
-        <main className="flex flex-col gap-4">
+        <main className="flex flex-col gap-4 pl-5 lg:pl- fixed bottom-8 lg:static">
           <AuthorizeButton />
           <div className="">
-            <Button onClick={onCancel} className="bg-White w-[465px] h-[50px] border-2 border-Black">
+            <Button onClick={onCancel} className="bg-White w-[361px] lg:w-[465px] h-[50px] border border-Black">
               <span className="text-[16px] leading-[20px] tracking-[0px] font-semibold text-BgBlue">
                 Cancel
               </span>

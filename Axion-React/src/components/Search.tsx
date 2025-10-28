@@ -4,6 +4,7 @@ import BookmarksScreen from "./Bookmark/BookmarkScreen";
 import SearchResults from "./Search/SearchResults";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSearchTweets } from "../utils/useSearchTweets";
+import SearchButton from "./ui/SearchButton";
 
 const Search: React.FC = () => {
   const { keyword } = useParams();
@@ -30,6 +31,9 @@ const Search: React.FC = () => {
   return (
     <main className="container max-w-6xl mx-auto w-full">
       <section className="flex flex-col gap-10">
+        <div className="lg:hidden flex">
+          <SearchButton />
+        </div>
         {!keyword && (
           <main className="flex flex-col gap-12">
             {/* Previous Searches */}
@@ -49,7 +53,7 @@ const Search: React.FC = () => {
             </div>
 
             {/* Filter */}
-            <section>
+            <section className="lg:flex hidden">
               <BookmarkFilter />
             </section>
 

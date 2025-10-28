@@ -18,6 +18,8 @@ import BackArrow from './back.svg';
 import Cross  from './cross.svg';
 import Moon from "./moon.svg";
 import Sun from "./sun-light.svg";
+import Cancel from "./cancel.svg";
+import Filter from './mage_filter.svg'
 
 export {
     Vector,
@@ -39,5 +41,7 @@ export {
     BackArrow,
     Cross,
     Moon,
-    Sun
+    Sun,
+    Cancel,
+    Filter
 };

@@ -10,6 +10,7 @@ import { Time } from "../assets";
 import { formatTimeAgo } from "../utils/timeAgo";
 import { shortenText } from "../utils/shortenText";
 import categoryColors from "../utils/categoryColors";
+import SearchButton from "./ui/SearchButton";
 
 const Category: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -21,6 +22,9 @@ const Category: React.FC = () => {
   return (
     <main className="container max-w-6xl mx-auto w-full">
       <section className="flex flex-col gap-10">
+      <section className="lg:hidden flex">
+        <SearchButton />
+      </section>
         <div className="flex flex-col justify-between gap-5">
           <div className="flex flex-row justify-between items-center text-center">
             <span className="text-lg text-Black leading-[20px] tracking-0 font-medium">
@@ -28,7 +32,7 @@ const Category: React.FC = () => {
             </span>
 
             <button
-              className={`px-3 py-1 rounded ${
+              className={`px-3 py-1 rounded hidden lg:flex ${
                 selectedCategory === null
                   ? "bg-BgBlue text-white"
                   : "bg-gray-200"
@@ -66,14 +70,25 @@ const Category: React.FC = () => {
           </div>
         </div>
 
-        <section>
+        <section className="lg:flex hidden">
           <BookmarkFilter />
         </section>
+
+        <div className="lg:hidden flex">
+          <button
+            className={`px-3 py-1 rounded-full fixed bottom-10 right-5 w-[60px] h-[60px] ${
+              selectedCategory === null ? "bg-BgBlue text-white" : "bg-gray-200"
+            }`}
+            onClick={() => navigate("/category")}
+          >
+            All
+          </button>
+        </div>
 
         {bookmarks.length === 0 ? (
           <p className="text-black text-center">no bookmarks found</p>
         ) : (
-          <ul className="grid grid-cols-3 gap-5">
+          <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 w-[385px] lg:w-full">
             {bookmarks.map((tweet) => {
               return (
                 <li
@@ -102,12 +117,12 @@ const Category: React.FC = () => {
                         {formatTimeAgo(tweet.created_at)}
                       </span>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-3 text-center items-center">
                       {tweet.profilePic && (
                         <img
                           src={tweet.profilePic}
                           alt="Profile"
-                          className="w-10 h-10 rounded-full mb-2"
+                          className="w-10 h-10 rounded-full"
                         />
                       )}
                       <span className="text-[14px] text-TextGray">

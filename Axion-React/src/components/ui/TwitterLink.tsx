@@ -9,7 +9,7 @@ const TwitterLink: React.FC<URL> = ({ url }) => {
   return(
       <>
       <Link to={url} target="_blank" rel="noopener noreferrer">
-        <Button className="bg-WhiteGra flex flex-row gap-5 h-[60px] w-[500px] border border-ParagraphGray">
+        <Button className="bg-WhiteGra flex flex-row gap-5 h-[60px] w-[180px] lg:w-[500px] border border-ParagraphGray">
           <span className="text-[12px] text-ParagraphGray font-medium leading-[15px] tracking-[0px]">Open in twitter</span>
         </Button>
       </Link>

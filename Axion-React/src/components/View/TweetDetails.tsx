@@ -16,16 +16,16 @@ const TweetDetails = () => {
   if (!tweet) return <div className="p-6">Tweet not found.</div>;
 
   return (
-    <main className="container max-w-6xl w-full mx-auto -mt-[5re]">
-      <section className="flex flex-col gap-2 -ml-4">
+    <main className="container max-w-6xl w-full mx-auto -mt-4 lg:-mt-0">
+      <section className="flex flex-col gap-2 -ml-[2rem] lg:-ml-4">
         {/* Back button */}
         <div className="">
           <BackButton onClick={() => navigate(-1)} />
         </div>
         {/* Main Details */}
 
-        <main className="py-[20px] px-[30px]">
-          <section className="flex flex-col justify-between gap-6 p-[20px] bg-WhiteGray rounded-[30px]">
+        <main className="lg:py-[20px] lg:px-[30px] px-2">
+          <section className="flex flex-col justify-between gap-6 p-[20px] lg:bg-WhiteGray rounded-[30px]">
             {/* Category */}
             <div>
               <span
@@ -53,7 +53,7 @@ const TweetDetails = () => {
                 <img
                   src={tweet.profilePic}
                   alt="Profile"
-                  className="w-10 h-10 rounded-full mb-2"
+                  className="w-10 h-10 rounded-full"
                 />
               )}
               {tweet.is_verified && <span className="text-blue-500">✔️</span>}
@@ -62,7 +62,7 @@ const TweetDetails = () => {
               </span>
             </div>
             {/* Text */}
-            <div>
+            <div className="w-[380px] lg:w-full">
               <p className="text-[16px] text-TextGray leading-[25px] tracking-[-0.5px] font-medium">
                 {tweet.tweet_text}
               </p>
@@ -98,6 +98,7 @@ const TweetDetails = () => {
             <div className="flex flex-col gap-5">
               {/* Line */}
               <div className="bg-BorderGray h-px"></div>
+
               {/* Buttons */}
               <div className="flex flex-row gap-8">
                 <MarkBookmark2 />

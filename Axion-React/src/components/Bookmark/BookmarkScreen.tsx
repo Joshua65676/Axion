@@ -15,9 +15,12 @@ const BookmarksScreen: React.FC = () => {
   if (bookmarks.length === 0) return <EmptyBookmark />;
 
   return (
-    <div className="relativ w-ful h-ful">
+    <div className="flex flex-col gap-3">
+      <div className="lg:hidden flex">
+        <span className="text-Black font-medium text-[16px] leading-[20px] tracking-0">Bookmarks</span>
+      </div>
       <>
-        <ul className="grid grid-cols-3 gap-5">
+        <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 w-[385px] lg:w-full">
           {bookmarks.map((bm, i) => {
             return (
               <li key={i} className="bg-WhiteGray p-[20px] rounded-[30px]">
@@ -39,12 +42,12 @@ const BookmarksScreen: React.FC = () => {
                       {formatTimeAgo(bm.created_at)}
                     </span>
                   </div>
-                  <div className="flex gap-1">
+                  <div className="flex gap-3 text-center items-center">
                     {bm.profilePic && (
                       <img
                         src={bm.profilePic}
                         alt="Profile"
-                        className="w-10 h-10 rounded-full mb-2"
+                        className="w-10 h-10 rounded-full"
                       />
                     )}
                     <span className="text-[14px] text-TextGray">

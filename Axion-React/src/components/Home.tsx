@@ -5,6 +5,7 @@ import BookmarkFilter from "./Bookmark/BookmarkFilter";
 import ExtensionNotInstall from "./Extension/ExtensionNotInstall";
 import BookmarksScreen from "./Bookmark/BookmarkScreen";
 import { useFetchBookmarks } from "../utils/FetchBookmarks";
+import SearchButton from "./ui/SearchButton";
 
 const Home: React.FC = () => {
   const [extensionInstalled, setExtensionInstalled] = useState(false);
@@ -38,8 +39,12 @@ const Home: React.FC = () => {
             </span>
           </div>
 
+          <section className="lg:hidden flex">
+            <SearchButton />
+          </section>
+
           <section className="flex flex-row gap-10">
-            <div className="flex flex-col w-[313px] h-[143px] border border-UnreadText rounded-3xl p-[20px] gap-3 bg-UnreadBg">
+            <div className="flex flex-col w-[175px] h-[100px] lg:w-[313px] lg:h-[143px] border border-UnreadText rounded-3xl p-[20px] gap-3 bg-UnreadBg">
               <div className="flex flex-row gap-[3px]">
                 <img src={Unread} alt="unread icon" />
                 <span className="text-[12px] font-normal leading-[125%] tracking-[-0.5%] text-UnreadText">
@@ -51,7 +56,7 @@ const Home: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex flex-col w-[313px] h-[143px] border border-BgBlue rounded-3xl p-[20px] gap-3 bg-BgParagraph">
+            <div className="flex flex-col w-[174px] h-[100px] lg:w-[313px] lg:h-[143px] border border-BgBlue rounded-3xl p-[20px] gap-3 bg-BgParagraph">
               <div className="flex flex-row gap-[3px]">
                 <img src={BookmarkBold} alt="bookmark icon" />
                 <span className="text-[14px] font-normal leading-[125%] tracking-[-0.5%] text-BgBlue">
@@ -65,7 +70,7 @@ const Home: React.FC = () => {
           </section>
         </main>
 
-        <section>
+        <section className="hidden lg:flex">
           <BookmarkFilter />
         </section>
 

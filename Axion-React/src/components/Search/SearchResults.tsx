@@ -26,7 +26,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
 
   return (
     <div className="relative w-full h-full">
-      <ul className="grid grid-cols-3 gap-5">
+      <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:w-full w-[385px]">
         {enrichedResults.map((tweet) => (
           <li
             key={tweet.tweet_id}
@@ -57,7 +57,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
                   <img
                     src={tweet.profilePic}
                     alt="Profile"
-                    className="w-10 h-10 rounded-full mb-2"
+                    className="w-10 h-10 rounded-full"
                   />
                 )}
                 {tweet.is_verified && (
