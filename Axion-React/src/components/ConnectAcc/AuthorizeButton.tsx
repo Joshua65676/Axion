@@ -5,7 +5,7 @@ const AuthorizeButton: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const handleLogin = () => {
     setIsLoading(true);
-    window.location.href = "http://localhost/axion/Axion-PHP/twitter-login.php";
+    window.location.href = "https://joshdev.infinityfreeapp.com/twitter-login.php";
   };
 
   return (

@@ -11,8 +11,8 @@ export const useFetchBookmarks = (category: string | null) => {
 
   const fetchData = () => {
     const url = category
-      ? `http://localhost/axion/Axion-PHP/get-bookmarks.php?category=${encodeURIComponent(category)}`
-      : `http://localhost/axion/Axion-PHP/get-bookmarks.php`;
+      ? `https://joshdev.infinityfreeapp.com/get-bookmarks.php?category=${encodeURIComponent(category)}`
+      : `https://joshdev.infinityfreeapp.com/get-bookmarks.php`;
 
     fetch(url, { credentials: "include" })
       .then((res) => res.json())

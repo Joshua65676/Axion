@@ -27,7 +27,7 @@ export const useFetchTweet = (tweet_id: string | undefined) => {
   useEffect(() => {
     if (!tweet_id) return;
 
-    fetch(`http://localhost/axion/Axion-PHP/api/tweet.php?id=${tweet_id}`)
+    fetch(`https://joshdev.infinityfreeapp.com/api/tweet.php?id=${tweet_id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {

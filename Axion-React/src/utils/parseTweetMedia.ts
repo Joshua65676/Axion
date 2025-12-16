@@ -27,6 +27,6 @@ export const parseTweetMedia = (media: string[]): ParsedMedia => {
   return {
     profilePic: mediaArray.find((url) => url.includes("profile_images")),
     tweetImages: mediaArray.filter((url) => url.includes("media")),
-    tweetVideos: mediaArray.filter((url) => url.includes("video")),
+    tweetVideos: mediaArray.filter((url) => url.includes("tweet_video")),
   };
 };

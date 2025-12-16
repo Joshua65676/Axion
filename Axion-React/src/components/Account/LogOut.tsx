@@ -6,7 +6,7 @@ const LogOut: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch("http://localhost/axion/Axion-PHP/logOut.php", {
+    fetch("https://joshdev.infinityfreeapp.com/logOut.php", {
       method: "POST",
       credentials: "include",
     })

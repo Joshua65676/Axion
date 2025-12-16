@@ -22,9 +22,9 @@ const Category: React.FC = () => {
   return (
     <main className="container max-w-6xl mx-auto w-full">
       <section className="flex flex-col gap-10">
-      <section className="lg:hidden flex">
-        <SearchButton />
-      </section>
+        <section className="flex lg:hidden">
+          <SearchButton />
+        </section>
         <div className="flex flex-col justify-between gap-5">
           <div className="flex flex-row justify-between items-center text-center">
             <span className="text-lg text-Black leading-[20px] tracking-0 font-medium">
@@ -134,6 +134,89 @@ const Category: React.FC = () => {
                         {shortenText(tweet.tweet_text, 100)}
                       </span>
                     </div>
+
+                    {(() => {
+                      const hasImages =
+                        Array.isArray(tweet.tweetImages) &&
+                        tweet.tweetImages.length > 0;
+                      const hasVideos =
+                        Array.isArray(tweet.tweetVideos) &&
+                        tweet.tweetVideos.length > 0;
+
+                      if (hasImages && hasVideos) {
+                        return (
+                          <div className="flex gap-2">
+                            <div className="flex-1 grid grid-cols-2 gap-2">
+                              {(tweet.tweetImages || []).map((url, index) => (
+                                <img
+                                  key={index}
+                                  src={url}
+                                  alt={`Tweet image ${index + 1}`}
+                                  className="w-full h-auto rounded-md"
+                                />
+                              ))}
+                            </div>
+                            <div className="flex-1 flex flex-col gap-2">
+                              {(tweet.tweetVideos || []).map((url, index) => (
+                                <video
+                                  key={index}
+                                  src={url}
+                                  controls
+                                  loop
+                                  autoPlay
+                                  muted
+                                  playsInline
+                                  className="w-full rounded-md"
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      if (hasImages) {
+                        return tweet.tweetImages.length === 1 ? (
+                          <img
+                            src={tweet.tweetImages[0]}
+                            alt="Tweet image"
+                            className="w-full h-auto rounded-md"
+                          />
+                        ) : (
+                          <div className="grid grid-cols-2 gap-2">
+                            {(tweet.tweetImages || []).map((url, index) => (
+                              <img
+                                key={index}
+                                src={url}
+                                alt={`Tweet image ${index + 1}`}
+                                className="w-full h-auto rounded-md"
+                              />
+                            ))}
+                          </div>
+                        );
+                      }
+
+                      if (hasVideos) {
+                        return (
+                          <div className="flex flex-col gap-2">
+                            {(tweet.tweetVideos || []).map((url, index) => (
+                              <video
+                                key={index}
+                                src={url}
+                                loop
+                                autoPlay
+                                muted
+                                playsInline
+                                controls
+                                className="w-full rounded-md"
+                              />
+                            ))}
+                          </div>
+                        );
+                      }
+
+                      return null;
+                    })()}
+
                     <div className="bg-BorderGray h-px"></div>
                     <div className="flex flex-row gap-3">
                       <View tweet={tweet} />

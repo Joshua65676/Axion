@@ -6,7 +6,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost/axion/Axion-PHP/check-login.php", {
+    fetch("https://joshdev.infinityfreeapp.com/check-login.php", {
       credentials: "include",
     })
       .then((res) => res.json())

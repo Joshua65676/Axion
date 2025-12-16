@@ -10,7 +10,7 @@ session_start();
 $consumerKey = $_ENV['CONSUMER_KEY'];
 $consumerSecret = $_ENV['CONSUMER_SECRET'];
 
-$callbackUrl = 'http://localhost/axion/Axion-PHP/twitter-callback.php';
+$callbackUrl = 'https://joshdev.infinityfreeapp.com/twitter-callback.php';
 
 $connection = new TwitterOAuth($consumerKey, $consumerSecret);
 $request_token = $connection->oauth('oauth/request_token', ['oauth_callback' => $callbackUrl]);

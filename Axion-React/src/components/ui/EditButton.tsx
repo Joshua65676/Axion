@@ -17,7 +17,7 @@ const EditCategory: React.FC<Props> = ({
   const handleUpdate = () => {
     if (!newCategory.trim()) return;
 
-    fetch("http://localhost/axion/Axion-PHP/update_category.php", {
+    fetch("https://joshdev.infinityfreeapp.com/update_category.php", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

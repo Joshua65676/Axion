@@ -4,7 +4,7 @@ import { parseTweetMedia } from "./parseTweetMedia";
 
 export const fetchTweetById = async (tweet_id: string): Promise<Tweet | null> => {
   try {
-    const res = await fetch(`http://localhost/axion/Axion-PHP/api/tweet.php?id=${tweet_id}`);
+    const res = await fetch(`https://joshdev.infinityfreeapp.com/api/tweet.php?id=${tweet_id}`);
     const data = await res.json();
     console.log("Fetching tweet_id:", tweet_id);
 

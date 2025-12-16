@@ -12,7 +12,7 @@ export const useSearchTweets = (keyword: string | undefined) => {
       return;
     }
 
-    fetch(`http://localhost/axion/Axion-PHP/search.php?query=${keyword}`)
+    fetch(`https://joshdev.infinityfreeapp.com/search.php?query=${keyword}`)
       .then((res) => res.json())
       .then((data) => {
         setResults(data);

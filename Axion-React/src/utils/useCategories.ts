@@ -4,7 +4,7 @@ export const useCategories = () => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost/axion/Axion-PHP/get_categories.php", {
+    fetch("https://joshdev.infinityfreeapp.com/get_categories.php", {
       credentials: "include",
     })
       .then((res) => res.json())

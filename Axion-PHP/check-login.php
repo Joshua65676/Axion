@@ -13,10 +13,10 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // ✅ Connect to database
-$host = 'localhost';
-$dbname = 'axion_bookmarks';
-$username = 'root';
-$password = '';
+$host = 'sql308.infinityfree.com';
+$dbname = 'if0_40694885_axion';
+$username = 'if0_40694885';
+$password = 'Joshua65676';
 
 try {
   $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

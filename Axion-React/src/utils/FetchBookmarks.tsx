@@ -32,7 +32,7 @@ export function useFetchBookmarks() {
     if (!user_id) return;
 
     fetch(
-      `http://localhost/axion/Axion-PHP/get-bookmarks.php?user_id=${user_id}`,
+      `https://joshdev.infinityfreeapp.com/get-bookmarks.php?user_id=${user_id}`,
       {
         method: "GET",
         credentials: "include",

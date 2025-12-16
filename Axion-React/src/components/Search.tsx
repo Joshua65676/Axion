@@ -13,7 +13,7 @@ const Search: React.FC = () => {
   const [previousSearches, setPreviousSearches] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost/axion/Axion-PHP/get_search_history.php", {
+    fetch("https://joshdev.infinityfreeapp.com/get_search_history.php", {
       credentials: "include",
     })
       .then((res) => res.json())
