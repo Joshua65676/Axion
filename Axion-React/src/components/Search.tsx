@@ -5,6 +5,7 @@ import SearchResults from "./Search/SearchResults";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSearchTweets } from "../utils/useSearchTweets";
 import SearchButton from "./ui/SearchButton";
+import { API_BASE_URL } from "../constants/api";
 
 const Search: React.FC = () => {
   const { keyword } = useParams();
@@ -13,7 +14,7 @@ const Search: React.FC = () => {
   const [previousSearches, setPreviousSearches] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("https://joshdev.infinityfreeapp.com/get_search_history.php", {
+    fetch(`${API_BASE_URL}/get_search_history.php`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -38,7 +39,9 @@ const Search: React.FC = () => {
           <main className="flex flex-col gap-12">
             {/* Previous Searches */}
             <div className="">
-              <h2 className="text-[16px] text-Black font-medium leading-[20px] tracking-0">‘’Previous search’’</h2>
+              <h2 className="text-[16px] text-Black font-medium leading-[20px] tracking-0">
+                ‘’Previous search’’
+              </h2>
               <ul className="mb-6 space-y-2">
                 {previousSearches.map((term, i) => (
                   <li

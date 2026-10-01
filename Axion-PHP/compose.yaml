@@ -1,0 +1,36 @@
+services:
+  app:
+    build: .
+    ports:
+      - "10000:10000"
+    environment:
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-axion}
+      DB_USER: ${DB_USER:-axion}
+      DB_PASSWORD: ${DB_PASSWORD:-axion_local}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5174}
+      API_BASE_URL: ${API_BASE_URL:-http://localhost:10000}
+      CONSUMER_KEY: ${CONSUMER_KEY:-}
+      CONSUMER_SECRET: ${CONSUMER_SECRET:-}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-axion}
+      MYSQL_USER: ${DB_USER:-axion}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-axion_local}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-axion_root_local}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql_data:

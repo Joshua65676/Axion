@@ -1,10 +1,8 @@
 <?php
-session_start();
+require_once __DIR__ . '/cors.php';
+require_once __DIR__ . '/session.php';
 require_once './database.php';
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -98,4 +96,3 @@ echo json_encode([
     'saved_ids' => $saved_ids,
     'timestamp' => date("Y-m-d H:i:s")
 ]);
-?>

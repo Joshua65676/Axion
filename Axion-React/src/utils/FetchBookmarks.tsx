@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { parseTweetMedia } from "./parseTweetMedia";
+import { API_BASE_URL } from "../constants/api";
 
 export interface Bookmark {
   tweet_id: string;
@@ -31,13 +32,10 @@ export function useFetchBookmarks() {
     const user_id = sessionStorage.getItem("user_id");
     if (!user_id) return;
 
-    fetch(
-      `https://joshdev.infinityfreeapp.com/get-bookmarks.php?user_id=${user_id}`,
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    )
+    fetch(`${API_BASE_URL}/get-bookmarks.php?user_id=${user_id}`, {
+      method: "GET",
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log("API response:", data);

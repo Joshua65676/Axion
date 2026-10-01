@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_BASE_URL } from "../../constants/api";
 
 interface Props {
   tweet_id: number;
@@ -17,7 +18,7 @@ const EditCategory: React.FC<Props> = ({
   const handleUpdate = () => {
     if (!newCategory.trim()) return;
 
-    fetch("https://joshdev.infinityfreeapp.com/update_category.php", {
+    fetch(`${API_BASE_URL}/update_category.php`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

@@ -1,8 +1,6 @@
 <?php
-session_start();
-
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Credentials: true");
+require_once __DIR__ . '/cors.php';
+require_once __DIR__ . '/session.php';
 header("Content-Type: application/json");
 
 if (!isset($_SESSION['user_id'])) {

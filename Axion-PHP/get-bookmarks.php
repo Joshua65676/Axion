@@ -1,8 +1,8 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:5173");
-header("Access-Control-Allow-Credentials: true");
+require_once __DIR__ . '/cors.php';
 header("Content-Type: application/json");
-session_start();
+require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/session.php';
 
 if (!isset($_SESSION['user_id'])) {
   echo json_encode(["error" => "Not logged in"]);
@@ -12,25 +12,28 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 try {
-  $pdo = new PDO("mysql:host=localhost;dbname=axion_bookmarks", "root", "");
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
   $category = $_GET['category'] ?? null;
 
   if ($category) {
-    $stmt = $pdo->prepare("SELECT tweet_id, tweet_text, username, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+    $stmt = $conn->prepare("SELECT tweet_id, tweet_text, username, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
       FROM bookmark
       WHERE user_id = ? AND category = ?");
-    $stmt->execute([$user_id, $category]);
+    $stmt->bind_param("ss", $user_id, $category);
   } else {
-    $stmt = $pdo->prepare("SELECT tweet_id, tweet_text, username, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+    $stmt = $conn->prepare("SELECT tweet_id, tweet_text, username, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
       FROM bookmark
       WHERE user_id = ?");
-    $stmt->execute([$user_id]);
+    $stmt->bind_param("s", $user_id);
   }
 
-  $bookmarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $bookmarks = $result->fetch_all(MYSQLI_ASSOC);
   echo json_encode(["bookmark" => $bookmarks]);
-} catch (PDOException $e) {
+  $stmt->close();
+  $conn->close();
+} catch (mysqli_sql_exception $e) {
+  error_log('Bookmark query failed: ' . $e->getMessage());
+  http_response_code(500);
   echo json_encode(["error" => "Database error"]);
 }

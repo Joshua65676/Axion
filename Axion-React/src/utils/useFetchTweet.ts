@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { parseTweetMedia } from "./parseTweetMedia";
+import { API_BASE_URL } from "../constants/api";
 
 export interface Tweet {
   tweet_id: number;
@@ -27,7 +28,7 @@ export const useFetchTweet = (tweet_id: string | undefined) => {
   useEffect(() => {
     if (!tweet_id) return;
 
-    fetch(`https://joshdev.infinityfreeapp.com/api/tweet.php?id=${tweet_id}`)
+    fetch(`${API_BASE_URL}/api/tweet.php?id=${tweet_id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {

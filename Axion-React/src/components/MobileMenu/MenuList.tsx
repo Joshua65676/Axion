@@ -10,7 +10,7 @@ interface Props {
 
 const MobileMenuList: React.FC<Props> = ({ onClicks }) => {
   return (
-    <main onClick={onClicks} className="flex flex-col gap-9">
+    <main onClick={onClicks} className="flex flex-col gap-5">
       <>
         <MenuList />
       </>

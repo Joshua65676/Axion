@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/Button";
+import { API_BASE_URL } from "../../constants/api";
 
 const LogOut: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch("https://joshdev.infinityfreeapp.com/logOut.php", {
+    fetch(`${API_BASE_URL}/logOut.php`, {
       method: "POST",
       credentials: "include",
     })
@@ -19,7 +20,9 @@ const LogOut: React.FC = () => {
     <div className=" flex items-center justify-center py-[20px] px-[10px]">
       <div className="bg-BgBlue flex flex-col gap-12 py-[30px] px-[15px] rounded-[25px] shadow-lg text-center w-[317px] h-[197px]">
         <div className="flex flex-col gap-5">
-          <h2 className="text-White text-[20px] leading-[15px] tracking-[0px] font-medium">Log Out</h2>
+          <h2 className="text-White text-[20px] leading-[15px] tracking-[0px] font-medium">
+            Log Out
+          </h2>
           <p className="text-[12px] font-normal text-WhiteGray leading-[15px] tracking-[0px]">
             Are you sure you want to logout?
           </p>

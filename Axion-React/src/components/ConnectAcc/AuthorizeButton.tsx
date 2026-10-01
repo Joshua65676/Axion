@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button } from "../ui/Button";
+import { API_BASE_URL } from "../../constants/api";
 
 const AuthorizeButton: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const handleLogin = () => {
     setIsLoading(true);
-    window.location.href = "https://joshdev.infinityfreeapp.com/twitter-login.php";
+    window.location.href = `${API_BASE_URL}/twitter-login.php`;
   };
 
   return (

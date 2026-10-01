@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Tweet } from "./useFetchTweet";
+import { API_BASE_URL } from "../constants/api";
 
 export const useSearchTweets = (keyword: string | undefined) => {
   const [results, setResults] = useState<Tweet[]>([]);
@@ -12,7 +13,9 @@ export const useSearchTweets = (keyword: string | undefined) => {
       return;
     }
 
-    fetch(`https://joshdev.infinityfreeapp.com/search.php?query=${keyword}`)
+    fetch(`${API_BASE_URL}/search.php?query=${keyword}`, {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((data) => {
         setResults(data);

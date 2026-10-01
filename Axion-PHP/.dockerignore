@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+vendor/
+.git/.env
+.git
+vendor
+*.log

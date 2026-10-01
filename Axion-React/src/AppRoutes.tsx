@@ -9,6 +9,7 @@ import AllBookmark from "./components/AllBookmark";
 import Search from "./components/Search";
 import Category from "./components/Category";
 import LogOut from "./components/Account/LogOut";
+import Settings from "./components/Settings"
 import MobileNavbar from "./components/MobileNavBar/Navbar";
 
 function AppRoutes() {
@@ -101,6 +102,16 @@ function AppRoutes() {
             <ProtectedRoute>
               <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
                 <Category />
+              </section>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+                <Settings />
               </section>
             </ProtectedRoute>
           }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Tweet } from "./useFetchTweet"; 
 import { parseTweetMedia } from "./parseTweetMedia";
+import { API_BASE_URL } from "../constants/api";
 
 interface BookmarkResponse {
   bookmark: Tweet[];
@@ -11,8 +12,8 @@ export const useFetchBookmarks = (category: string | null) => {
 
   const fetchData = () => {
     const url = category
-      ? `https://joshdev.infinityfreeapp.com/get-bookmarks.php?category=${encodeURIComponent(category)}`
-      : `https://joshdev.infinityfreeapp.com/get-bookmarks.php`;
+      ? `${API_BASE_URL}/get-bookmarks.php?category=${encodeURIComponent(category)}`
+      : `${API_BASE_URL}/get-bookmarks.php`;
 
     fetch(url, { credentials: "include" })
       .then((res) => res.json())

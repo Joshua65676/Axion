@@ -20,6 +20,8 @@ import Moon from "./moon.svg";
 import Sun from "./sun-light.svg";
 import Cancel from "./cancel.svg";
 import Filter from './mage_filter.svg'
+import Repeat from './repeat.svg'
+import Date from './date.svg'
 
 export {
     Vector,
@@ -43,5 +45,7 @@ export {
     Moon,
     Sun,
     Cancel,
-    Filter
+    Filter,
+    Date,
+    Repeat
 };

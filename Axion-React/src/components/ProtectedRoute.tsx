@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { API_BASE_URL } from "../constants/api";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    fetch("https://joshdev.infinityfreeapp.com/check-login.php", {
+    fetch(`${API_BASE_URL}/check-login.php`, {
       credentials: "include",
     })
       .then((res) => res.json())

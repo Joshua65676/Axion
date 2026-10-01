@@ -11,6 +11,7 @@ import { formatTimeAgo } from "../utils/timeAgo";
 import { shortenText } from "../utils/shortenText";
 import categoryColors from "../utils/categoryColors";
 import SearchButton from "./ui/SearchButton";
+import EmptyBookmark from "./Bookmark/EmptyBookmark";
 
 const Category: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -86,7 +87,9 @@ const Category: React.FC = () => {
         </div>
 
         {bookmarks.length === 0 ? (
-          <p className="text-black text-center">no bookmarks found</p>
+          <>
+            <EmptyBookmark />
+          </>
         ) : (
           <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 w-[385px] lg:w-full">
             {bookmarks.map((tweet) => {

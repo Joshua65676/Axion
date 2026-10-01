@@ -1,7 +1,6 @@
 <?php
-session_start();
-header("Access-Control-Allow-Origin: http://localhost:5173"); // React origin
-header("Access-Control-Allow-Credentials: true"); // Allow cookies
+require_once __DIR__ . '/cors.php';
+require_once __DIR__ . '/session.php';
 header("Content-Type: application/json");
 
 // ✅ Check if session is active
@@ -12,20 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// ✅ Connect to database
-$host = 'sql308.infinityfree.com';
-$dbname = 'if0_40694885_axion';
-$username = 'if0_40694885';
-$password = 'Joshua65676';
+require_once __DIR__ . '/database.php';
 
 try {
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  // ✅ Fetch username
-  $stmt = $pdo->prepare("SELECT screen_name FROM users WHERE user_id = ?");
-  $stmt->execute([$user_id]);
-  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt = $conn->prepare("SELECT screen_name FROM users WHERE user_id = ?");
+  $stmt->bind_param("s", $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result()->fetch_assoc();
 
   if ($result) {
     echo json_encode([
@@ -37,7 +29,10 @@ try {
     echo json_encode(["loggedIn" => false]);
   }
 
-} catch (PDOException $e) {
+  $stmt->close();
+  $conn->close();
+} catch (mysqli_sql_exception $e) {
   error_log("DB Error: " . $e->getMessage());
+  http_response_code(500);
   echo json_encode(["DB Error" => "Database error"]);
 }
