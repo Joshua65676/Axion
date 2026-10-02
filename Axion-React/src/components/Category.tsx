@@ -91,7 +91,7 @@ const Category: React.FC = () => {
             <EmptyBookmark />
           </>
         ) : (
-          <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 w-[385px] lg:w-full">
+          <ul className="grid w-full min-w-0 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {bookmarks.map((tweet) => {
               return (
                 <li
@@ -178,15 +178,16 @@ const Category: React.FC = () => {
                       }
 
                       if (hasImages) {
-                        return tweet.tweetImages.length === 1 ? (
+                        const images = tweet.tweetImages ?? [];
+                        return images.length === 1 ? (
                           <img
-                            src={tweet.tweetImages[0]}
+                            src={images[0]}
                             alt="Tweet image"
                             className="w-full h-auto rounded-md"
                           />
                         ) : (
                           <div className="grid grid-cols-2 gap-2">
-                            {(tweet.tweetImages || []).map((url, index) => (
+                            {images.map((url, index) => (
                               <img
                                 key={index}
                                 src={url}
@@ -221,7 +222,7 @@ const Category: React.FC = () => {
                     })()}
 
                     <div className="bg-BorderGray h-px"></div>
-                    <div className="flex flex-row gap-3">
+                    <div className="flex flex-wrap gap-3">
                       <View tweet={tweet} />
                       <MarkBookmark />
                     </div>

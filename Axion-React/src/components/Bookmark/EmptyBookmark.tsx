@@ -9,8 +9,12 @@ const EmptyBookmark: React.FC = () => {
         <h2 className="text-TextColor text-[20px] leading-[100%] tracking-[-0.5%] font-semibold">
           Go to your Twitter Bookmarks and save them with Axion.
         </h2>
-        <Link to="https://twitter.com/i/bookmarks" target="_blank" className="">
-          <Button className="w-[18rem] bg-BlueHover hover:bg-BookmarkText">
+        <Link
+          to="https://twitter.com/i/bookmarks"
+          target="_blank"
+          className="w-full max-w-[18rem]"
+        >
+          <Button className="w-full bg-BlueHover hover:bg-BookmarkText">
             <span className="text-WhiteGray leading-[20px]">
               Open Your Twitter Bookmarks
             </span>

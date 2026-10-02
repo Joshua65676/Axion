@@ -24,16 +24,16 @@ const Navbar: React.FC = () => {
           : ""
       }`}
     >
-      <section className="container max-w-6xl mx-auto w-full relative left-[-10rem] right-0">
-        <main className="pl-40 p-4 flex flex-row justify-between">
-          <div className="flex flex-row justify-between w-full">
+      <section className="w-full">
+        <main className="relative flex w-full items-center gap-4 px-4 py-3">
+          <div className="min-w-0 flex-1">
             <SearchButton />
-            <div className="flex flex-row gap-8 relative right-0 left-[9rem]">
-              <Notification />
-              <ConnectExtension />
-            </div>
           </div>
-          <div className="absolute bg-BorderGray left-[8rem] right-[-13rem] top-[5rem] h-px"></div>
+          <div className="flex shrink-0 items-center gap-4">
+            <Notification />
+            <ConnectExtension />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 h-px bg-BorderGray"></div>
         </main>
       </section>
     </nav>

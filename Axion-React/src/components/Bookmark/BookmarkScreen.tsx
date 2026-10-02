@@ -22,10 +22,13 @@ const BookmarksScreen: React.FC = () => {
         </span>
       </div>
       <>
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-[385px] lg:w-full">
+        <ul className="grid w-full min-w-0 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {bookmarks.map((bm, i) => {
             return (
-              <li key={i} className="bg-WhiteGray p-[20px] rounded-[30px] min-h-[100px] flex flex-col justify-between">
+              <li
+                key={i}
+                className="bg-WhiteGray p-[20px] rounded-[30px] min-h-[100px] flex flex-col justify-between"
+              >
                 <main className="flex flex-col gap-3">
                   <span
                     className={`text-[12px] font-medium text-center w-[7rem] h-[28px] p-[5px] rounded-[20px] ${
@@ -102,15 +105,16 @@ const BookmarksScreen: React.FC = () => {
                     }
 
                     if (hasImages) {
-                      return bm.tweetImages.length === 1 ? (
+                      const images = bm.tweetImages ?? [];
+                      return images.length === 1 ? (
                         <img
-                          src={bm.tweetImages[0]}
+                          src={images[0]}
                           alt="Tweet image"
                           className="w-full h-auto rounded-md"
                         />
                       ) : (
                         <div className="grid grid-cols-2 gap-2">
-                          {(bm.tweetImages || []).map((url, index) => (
+                          {images.map((url, index) => (
                             <img
                               key={index}
                               src={url}
@@ -145,7 +149,7 @@ const BookmarksScreen: React.FC = () => {
                   })()}
 
                   <div className="bg-BorderGray h-px"></div>
-                  <div className="flex flex-row gap-3 items-center justify-center">
+                  <div className="flex flex-wrap items-center justify-center gap-3">
                     <View tweet={bm} />
                     <MarkBookmark />
                   </div>

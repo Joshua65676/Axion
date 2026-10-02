@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { Tweet } from "./useFetchTweet"; 
 import { parseTweetMedia } from "./parseTweetMedia";
 import { API_BASE_URL } from "../constants/api";
@@ -10,7 +10,7 @@ interface BookmarkResponse {
 export const useFetchBookmarks = (category: string | null) => {
   const [bookmarks, setBookmarks] = useState<Tweet[]>([]);
 
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     const url = category
       ? `${API_BASE_URL}/get-bookmarks.php?category=${encodeURIComponent(category)}`
       : `${API_BASE_URL}/get-bookmarks.php`;
@@ -27,11 +27,11 @@ export const useFetchBookmarks = (category: string | null) => {
         setBookmarks(enriched);
       })
       .catch(() => setBookmarks([]));
-  };
+  }, [category]);
 
   useEffect(() => {
     fetchData();
-  }, [category]);
+  }, [fetchData]);
 
   return { bookmarks, refresh: fetchData };
 };

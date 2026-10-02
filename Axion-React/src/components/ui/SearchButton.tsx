@@ -16,8 +16,8 @@ const SearchButton: React.FC = () => {
 
   return (
     <section>
-      <main className="flex flex-row text-center justify-between items-center gap-5">
-        <div className="relative lg:w-[50rem] max-w-md">
+      <main className="flex w-full flex-row items-center justify-between gap-2 text-center sm:gap-4">
+        <div className="relative min-w-0 flex-1 lg:max-w-2xl">
           <img
             src={Vector}
             alt="search icon"
@@ -25,12 +25,12 @@ const SearchButton: React.FC = () => {
           />
           <input
             type="text"
-            placeholder="Search bookmarks by username or category"
+            placeholder="Search bookmarks"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => navigate("/search")}
             onKeyDown={handleKeyDown}
-            className="pl-15 pr-5 py-2 lg:w-full lg:h- w-[300px] h-[55px] border bg-WhiteGray border-SearchGray rounded-full focus:outline-none focus:ring-2 focus:ring-SearchGray text-Black"
+            className="h-12 w-full min-w-0 rounded-full border border-SearchGray bg-WhiteGray py-2 pl-12 pr-4 text-Black focus:outline-none focus:ring-2 focus:ring-SearchGray sm:h-[55px] sm:pl-14"
           />
         </div>
 

@@ -9,15 +9,17 @@ import AllBookmark from "./components/AllBookmark";
 import Search from "./components/Search";
 import Category from "./components/Category";
 import LogOut from "./components/Account/LogOut";
-import Settings from "./components/Settings"
+import Settings from "./components/Settings";
 import MobileNavbar from "./components/MobileNavBar/Navbar";
 
 function AppRoutes() {
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
+  const pageClassName =
+    "min-h-screen w-full px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pb-8 lg:pt-24";
 
   return (
-    <main className="container max-w-6xl mx-auto w-full">
+    <main className="min-h-screen w-full lg:ml-[18.8rem] lg:w-[calc(100%-18.8rem)]">
       <div className="flex lg:hidden">
         <MobileNavbar />
       </div>
@@ -31,7 +33,9 @@ function AppRoutes() {
         <Route
           path="/"
           element={
-            <section className="flex justify-center items-center text-center h-screen lg:pl-[40rem]">
+            <section
+              className={`${pageClassName} flex items-center justify-center text-center`}
+            >
               <ConnectAcc />
             </section>
           }
@@ -40,7 +44,7 @@ function AppRoutes() {
           path="/home"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <Home />
               </section>
             </ProtectedRoute>
@@ -50,7 +54,7 @@ function AppRoutes() {
           path="/:username/tweet/:tweet_id"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] lg:w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <TweetDetails />
               </section>
             </ProtectedRoute>
@@ -60,7 +64,7 @@ function AppRoutes() {
           path="/allbookmarks"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <AllBookmark />
               </section>
             </ProtectedRoute>
@@ -70,7 +74,7 @@ function AppRoutes() {
           path="/search"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <Search />
               </section>
             </ProtectedRoute>
@@ -80,7 +84,7 @@ function AppRoutes() {
           path="/search/:keyword"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <Search />
               </section>
             </ProtectedRoute>
@@ -90,7 +94,7 @@ function AppRoutes() {
           path="/category"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <Category />
               </section>
             </ProtectedRoute>
@@ -100,7 +104,7 @@ function AppRoutes() {
           path="/category/:name"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <Category />
               </section>
             </ProtectedRoute>
@@ -110,7 +114,7 @@ function AppRoutes() {
           path="/settings"
           element={
             <ProtectedRoute>
-              <section className="absolute top-0 lg:left-[18.8rem] lg:px-[30px] py-[20px] w-[75rem] lg:pt-[6rem] pt-[7rem] px-[20px]">
+              <section className={pageClassName}>
                 <Settings />
               </section>
             </ProtectedRoute>

@@ -43,8 +43,8 @@ const Home: React.FC = () => {
             <SearchButton />
           </section>
 
-          <section className="flex flex-row gap-10">
-            <div className="flex flex-col w-[175px] h-[100px] lg:w-[313px] lg:h-[143px] border border-UnreadText rounded-3xl p-[20px] gap-3 bg-UnreadBg">
+          <section className="grid grid-cols-2 gap-3 sm:gap-5">
+            <div className="flex min-w-0 flex-col gap-3 rounded-3xl border border-UnreadText bg-UnreadBg p-4 sm:min-h-[143px] sm:p-5">
               <div className="flex flex-row gap-[3px]">
                 <img src={Unread} alt="unread icon" />
                 <span className="text-[12px] font-normal leading-[125%] tracking-[-0.5%] text-UnreadText">
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
               </span>
             </div>
 
-            <div className="flex flex-col w-[174px] h-[100px] lg:w-[313px] lg:h-[143px] border border-BgBlue rounded-3xl p-[20px] gap-3 bg-BgParagraph">
+            <div className="flex min-w-0 flex-col gap-3 rounded-3xl border border-BgBlue bg-BgParagraph p-4 sm:min-h-[143px] sm:p-5">
               <div className="flex flex-row gap-[3px]">
                 <img src={BookmarkBold} alt="bookmark icon" />
                 <span className="text-[14px] font-normal leading-[125%] tracking-[-0.5%] text-BgBlue">

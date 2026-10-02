@@ -18,7 +18,7 @@ const LogOut: React.FC = () => {
   };
   return (
     <div className=" flex items-center justify-center py-[20px] px-[10px]">
-      <div className="bg-BgBlue flex flex-col gap-12 py-[30px] px-[15px] rounded-[25px] shadow-lg text-center w-[317px] h-[197px]">
+      <div className="flex min-h-[197px] w-full max-w-[20rem] flex-col justify-between gap-8 rounded-[25px] bg-BgBlue px-4 py-7 text-center shadow-lg">
         <div className="flex flex-col gap-5">
           <h2 className="text-White text-[20px] leading-[15px] tracking-[0px] font-medium">
             Log Out
@@ -27,16 +27,16 @@ const LogOut: React.FC = () => {
             Are you sure you want to logout?
           </p>
         </div>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-3">
           <Button
             onClick={handleLogout}
-            className="px-4 py-2 bg-ParagraphGray hover:bg-UnreadText text-white rounded-[20px] w-[130px] h-[35px]"
+            className="h-10 min-w-0 flex-1 bg-ParagraphGray px-3 py-2 text-white hover:bg-UnreadText"
           >
             Yes
           </Button>
           <Button
             onClick={() => navigate(-1)}
-            className="px-4 py-2 bg-White text-BgBlue rounded-[20px] w-[130px] h-[35px]"
+            className="h-10 min-w-0 flex-1 bg-White px-3 py-2 text-BgBlue"
           >
             No
           </Button>

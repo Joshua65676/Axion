@@ -16,15 +16,15 @@ const TweetDetails = () => {
   if (!tweet) return <div className="p-6">Tweet not found.</div>;
 
   return (
-    <main className="container max-w-6xl w-full mx-auto -mt-4 lg:-mt-0">
-      <section className="flex flex-col gap-2 -ml-[2rem] lg:-ml-4">
+    <main className="mx-auto -mt-4 w-full min-w-0 max-w-6xl lg:-mt-0">
+      <section className="flex min-w-0 flex-col gap-2">
         {/* Back button */}
         <div className="">
           <BackButton onClick={() => navigate(-1)} />
         </div>
         {/* Main Details */}
 
-        <main className="lg:py-[20px] lg:px-[30px] px-2">
+        <main className="min-w-0 px-2 lg:px-[30px] lg:py-[20px]">
           <section className="flex flex-col justify-between gap-6 p-[20px] lg:bg-WhiteGray rounded-[30px]">
             {/* Category */}
             <div>
@@ -62,7 +62,7 @@ const TweetDetails = () => {
               </span>
             </div>
             {/* Text */}
-            <div className="w-[380px] lg:w-full">
+            <div className="w-full min-w-0 break-words">
               <p className="text-[16px] text-TextGray leading-[25px] tracking-[-0.5px] font-medium">
                 {tweet.tweet_text}
               </p>
@@ -100,7 +100,7 @@ const TweetDetails = () => {
               <div className="bg-BorderGray h-px"></div>
 
               {/* Buttons */}
-              <div className="flex flex-row gap-8">
+              <div className="flex flex-wrap gap-4 sm:gap-8">
                 <MarkBookmark2 />
                 <TwitterLink url={tweet.tweet_url} />
               </div>

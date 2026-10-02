@@ -1,10 +1,12 @@
 import React from "react";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
-import type { Bookmark } from "../../utils/FetchBookmarks";
 
 interface Props {
-  tweet: Bookmark;
+  tweet: {
+    tweet_id: string | number;
+    username: string;
+  };
 }
 const View: React.FC<Props> = ({ tweet }) => {
   return (

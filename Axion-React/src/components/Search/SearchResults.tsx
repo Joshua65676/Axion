@@ -14,9 +14,10 @@ interface Props {
 
 const SearchResults: React.FC<Props> = ({ results, loading }) => {
   if (loading) return <div className="p-6">Searching...</div>;
-  if (results.length === 0) return (
-    <div className="text-2xl text-center text-Black">No results found.</div>
-  );
+  if (results.length === 0)
+    return (
+      <div className="text-2xl text-center text-Black">No results found.</div>
+    );
 
   const enrichedResults = results.map((tweet) => ({
     ...tweet,
@@ -26,7 +27,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
 
   return (
     <div className="relative w-full h-full">
-      <ul className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:w-full w-[385px]">
+      <ul className="grid w-full min-w-0 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {enrichedResults.map((tweet) => (
           <li
             key={tweet.tweet_id}
@@ -60,9 +61,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
                     className="w-10 h-10 rounded-full"
                   />
                 )}
-                {tweet.is_verified && (
-                  <span className="text-blue-500">✔️</span>
-                )}
+                {tweet.is_verified && <span className="text-blue-500">✔️</span>}
                 <span className="text-[14px] text-TextGray">
                   @{tweet.username}
                 </span>
@@ -76,7 +75,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
 
               <div className="bg-BorderGray h-px"></div>
 
-              <div className="flex flex-row gap-3">
+              <div className="flex flex-wrap gap-3">
                 <View tweet={tweet} />
                 <MarkBookmark />
               </div>

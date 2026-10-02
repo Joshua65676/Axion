@@ -6,15 +6,22 @@ interface URL {
 }
 
 const TwitterLink: React.FC<URL> = ({ url }) => {
-  return(
-      <>
-      <Link to={url} target="_blank" rel="noopener noreferrer">
-        <Button className="bg-WhiteGra flex flex-row gap-5 h-[60px] w-[180px] lg:w-[500px] border border-ParagraphGray">
-          <span className="text-[12px] text-ParagraphGray font-medium leading-[15px] tracking-[0px]">Open in twitter</span>
+  return (
+    <>
+      <Link
+        className="min-w-0 flex-1 basis-[180px]"
+        to={url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button className="h-[60px] w-full border border-ParagraphGray bg-WhiteGra">
+          <span className="text-[12px] text-ParagraphGray font-medium leading-[15px] tracking-[0px]">
+            Open in twitter
+          </span>
         </Button>
       </Link>
     </>
-  ) 
+  );
 };
 
 export default TwitterLink;
