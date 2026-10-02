@@ -24,15 +24,15 @@ const MobileNavbar: React.FC = () => {
           : ""
       }`}
     >
-      <main className="container max-w-6xl mx-auto w-full">
+      <main className="container max-w-6xl mx-auto w-full py-1">
         <section className="flex flex-row justify-between p-4">
           <img
             src={Logo}
             alt="Axion Logo"
             className="w-[5rem] h-[4rem] rounded-md"
           />
-          <button onClick={() => setIsMenuOpen(true)}>
-            <img src={Hamburger} alt="humburger icon" className="w-[30px]" />
+          <button onClick={() => setIsMenuOpen(true)} className="flex items-center justify-center curdor-pointer">
+            <img src={Hamburger} alt="humburger icon" className="w-[30px] cursor-pointer" />
           </button>
         </section>
         <div>

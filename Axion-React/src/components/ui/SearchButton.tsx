@@ -15,7 +15,7 @@ const SearchButton: React.FC = () => {
   };
 
   return (
-    <section>
+    <section className="w-full text-center">
       <main className="flex w-full flex-row items-center justify-between gap-2 text-center sm:gap-4">
         <div className="relative min-w-0 flex-1 lg:max-w-2xl">
           <img

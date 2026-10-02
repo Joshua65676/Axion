@@ -57,7 +57,7 @@ const handleConnect = () => {
 
   return (
     <main className="flex flex-col gap-5">
-      <Button onClick={handleConnect} className="w-[12rem] bg-BgBlue hover:bg-BlueHover">
+      <Button onClick={handleConnect} className="w-[12rem] bg-BgBlue hover:bg-BlueHover cursor-pointer rounded-[10px] py-[10px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.5%] text-WhiteGray">
         <span className="text-WhiteGray text-[16px] font-semibold leading-[100%] tracking-[-0.5%]">Connect to Axion</span>
       </Button>
       <div>

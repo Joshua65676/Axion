@@ -71,8 +71,8 @@ const MobileMenu: React.FC<Props> = ({ isOpen, onClose }) => {
             <main className="flex flex-col gap-5">
               <div className="flex flex-row justify-between items-center">
                 <img src={Logo} alt="logo" className="w-[4rem] rounded-md"/>
-                <button onClick={onClose} className="-mr-5">
-                  <img src={Cancel} alt="cancel" className="w-[15px]"/>
+                <button onClick={onClose} className="flex items-center justify-center curdor-pointer">
+                  <img src={Cancel} alt="cancel" className="w-[15px] cursor-pointer"/>
                 </button>
               </div>
               <>

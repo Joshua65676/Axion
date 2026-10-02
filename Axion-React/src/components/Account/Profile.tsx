@@ -7,8 +7,8 @@ const Profile: React.FC = () => {
   const screenName = sessionStorage.getItem("screen_name");
 
   return (
-      <main className="-ml-3">
-        <Button className="bg-SearchGray rounded-full hover:bg-gray-300 w-[15.7rem]">
+      <main className="">
+        <Button className="bg-SearchGray hover:bg-gray-300 w-[15rem] cursor-pointer rounded-[10px] py-[10px] px-[16px] leading-[20px] tracking-[-0.5%]">
           <ProtectedRoute>
             <main className="flex flex-row gap-20 items-center justify-center">
               {/* User Name and Profile Pics */}

@@ -8,12 +8,12 @@ const LogOutButton: React.FC = () => {
 
   return (
     <main className="container max-w-6xl w-full max-auto">
-      <section className="-ml-5">
+      <section className="">
         <button
           onClick={() =>
             navigate("/logout", { state: { backgroundLocation: location } })
           }
-          className="flex flex-row gap-3"
+          className="flex flex-row gap-3 cursor-pointer"
         >
           <img src={SignOut} alt="Logout icon" />
           <h5 className="text-TextColor text-[14px] font-semibold">Log Out</h5>

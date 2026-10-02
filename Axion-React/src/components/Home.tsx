@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
   if (loading)
     return (
-      <div className="text-Black  flex justify-center items-center text-center">
+      <div className="text-Black flex justify-center items-center text-center">
         Loading...
       </div>
     );

@@ -32,7 +32,7 @@ const MenuList: React.FC = () => {
             </ul>
           ))}
         </main>
-        <div className=" bg-BorderGray -ml-3 h-px mt-1"></div>
+        <div className="bg-BorderGray -ml-3 h-px mt-3"></div>
       </main>
     </section>
   );
