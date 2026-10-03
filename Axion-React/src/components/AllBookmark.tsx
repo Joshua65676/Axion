@@ -21,8 +21,16 @@ const AllBookmark: React.FC = () => {
 
   if (loading)
     return (
-      <div className="text-Black  flex justify-center items-center text-center">
-        Loading...
+      <div
+        className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-3 text-center text-TextColor"
+        role="status"
+        aria-live="polite"
+      >
+        <span
+          className="size-8 animate-spin rounded-full border-2 border-BorderGray border-t-BgBlue"
+          aria-hidden="true"
+        />
+        <span className="text-sm">Getting your bookmarks ready...</span>
       </div>
     );
 

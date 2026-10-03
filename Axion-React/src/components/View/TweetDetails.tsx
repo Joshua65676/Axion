@@ -12,7 +12,20 @@ const TweetDetails = () => {
   const navigate = useNavigate();
   const { tweet, loading } = useFetchTweet(tweet_id);
 
-  if (loading) return <div className="p-6">Loading tweet...</div>;
+   if (loading)
+    return (
+      <div
+        className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-3 text-center text-TextColor"
+        role="status"
+        aria-live="polite"
+      >
+        <span
+          className="size-8 animate-spin rounded-full border-2 border-BorderGray border-t-BgBlue"
+          aria-hidden="true"
+        />
+        <span className="text-sm">Loading tweet...</span>
+      </div>
+    );
   if (!tweet) return <div className="p-6">Tweet not found.</div>;
 
   return (

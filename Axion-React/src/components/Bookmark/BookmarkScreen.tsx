@@ -11,7 +11,20 @@ import MarkBookmark from "../ui/MarkBookmark";
 const BookmarksScreen: React.FC = () => {
   const { bookmarks, loading } = useFetchBookmarks();
 
-  if (loading) return <div>Loading bookmarks...</div>;
+    if (loading)
+    return (
+      <div
+        className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-3 text-center text-TextColor"
+        role="status"
+        aria-live="polite"
+      >
+        <span
+          className="size-8 animate-spin rounded-full border-2 border-BorderGray border-t-BgBlue"
+          aria-hidden="true"
+        />
+        <span className="text-sm">Getting your bookmark ready...</span>
+      </div>
+    );
   if (bookmarks.length === 0) return <EmptyBookmark />;
 
   return (

@@ -13,7 +13,20 @@ interface Props {
 }
 
 const SearchResults: React.FC<Props> = ({ results, loading }) => {
-  if (loading) return <div className="p-6">Searching...</div>;
+    if (loading)
+    return (
+      <div
+        className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-3 text-center text-TextColor"
+        role="status"
+        aria-live="polite"
+      >
+        <span
+          className="size-8 animate-spin rounded-full border-2 border-BorderGray border-t-BgBlue"
+          aria-hidden="true"
+        />
+        <span className="text-sm">Searching...</span>
+      </div>
+    );
   if (results.length === 0)
     return (
       <div className="text-2xl text-center text-Black">No results found.</div>

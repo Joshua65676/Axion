@@ -11,6 +11,7 @@ import Category from "./components/Category";
 import LogOut from "./components/Account/LogOut";
 import Settings from "./components/Settings";
 import MobileNavbar from "./components/MobileNavBar/Navbar";
+import ExtensionNotInstall from "./components/Extension/ExtensionNotInstall";
 
 function AppRoutes() {
   const location = useLocation();
@@ -37,6 +38,14 @@ function AppRoutes() {
               className={`${pageClassName} flex items-center justify-center text-center`}
             >
               <ConnectAcc />
+            </section>
+          }
+        />
+        <Route
+          path="/extension-setup"
+          element={
+            <section className={pageClassName}>
+              <ExtensionNotInstall />
             </section>
           }
         />
