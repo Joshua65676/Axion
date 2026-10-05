@@ -8,8 +8,9 @@ export interface Bookmark {
   tweet_url: string;
   username: string;
   profile_pic: string;
-  media: string[];
+  media: string[] | string;
   video: string;
+  display_name: string;
   likes: string;
   retweets: string;
   comments: string;
@@ -40,10 +41,14 @@ export function useFetchBookmarks() {
       .then((data) => {
         console.log("API response:", data);
         const enriched = Array.isArray(data.bookmark)
-          ? data.bookmark.map((tweet: Bookmark) => ({
-              ...tweet,
-              ...parseTweetMedia(tweet.media),
-            }))
+          ? data.bookmark.map((tweet: Bookmark) => {
+              const parsedMedia = parseTweetMedia(tweet.media, tweet.video);
+              return {
+                ...tweet,
+                ...parsedMedia,
+                profilePic: tweet.profile_pic || parsedMedia.profilePic,
+              };
+            })
           : [];
 
         setBookmarks(enriched);

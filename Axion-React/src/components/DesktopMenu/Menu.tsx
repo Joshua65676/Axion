@@ -7,16 +7,16 @@ import Account from "../Account/Account";
 
 const Menu: React.FC = () => {
   return (
-    <section className="container max-w-6xl mx-auto w-full p-4 px-10 fixed left-0 bottom-5 h-screen hidden lg:flex">
-      <main className="flex flex-col absolute top-12 gap-5">
+    <section className="fixed inset-y-0 left-0 z-30 hidden h-screen w-[18.8rem] lg:flex">
+      <main className="relative flex h-full w-full flex-col gap-5 px-6 pt-12">
         {/* Logo and Icon */}
-        <main className="flex flex-row justify-between ">
+        <main className="relative flex flex-row justify-between">
           <div className="flex flex-row gap-30 items-center">
             <DesktopLogo />
             <Hambugar />
           </div>
-          <div className="bg-BorderGray h-screen w-px absolute left-13/12 -top-12 bottom-0"></div>
         </main>
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-px bg-BorderGray"></div>
         {/* Menu List */}
         <main>
           <MenuList />

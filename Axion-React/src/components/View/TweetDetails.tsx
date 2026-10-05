@@ -1,6 +1,6 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import BackButton from "../ui/BackButton";
-import { useFetchTweet } from "../../utils/useFetchTweet";
+import { useFetchTweet, type Tweet } from "../../utils/useFetchTweet";
 import categoryColors from "../../utils/categoryColors";
 import { formatTimeAgo } from "../../utils/timeAgo";
 import { Time } from "../../assets";
@@ -8,11 +8,16 @@ import MarkBookmark2 from "../ui/MarkBookmark2";
 import TwitterLink from "../ui/TwitterLink";
 
 const TweetDetails = () => {
-  const { tweet_id } = useParams();
+  const { tweet_id, username: routeUsername } = useParams();
   const navigate = useNavigate();
-  const { tweet, loading } = useFetchTweet(tweet_id);
+  const location = useLocation();
+  const routeTweet = location.state?.tweet as Tweet | undefined;
+  const { tweet: fetchedTweet, loading } = useFetchTweet(
+    routeTweet ? undefined : tweet_id,
+  );
+  const tweet = routeTweet || fetchedTweet;
 
-   if (loading)
+  if (loading && !routeTweet)
     return (
       <div
         className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-3 text-center text-TextColor"
@@ -62,16 +67,18 @@ const TweetDetails = () => {
             </div>
             {/* Profile Pics and username */}
             <div className="flex items-center gap-3">
-              {tweet.profilePic && (
+              {(tweet.profilePic || tweet.profile_pic) && (
                 <img
-                  src={tweet.profilePic}
+                  src={tweet.profilePic || tweet.profile_pic}
                   alt="Profile"
                   className="w-10 h-10 rounded-full"
                 />
               )}
               {tweet.is_verified && <span className="text-blue-500">✔️</span>}
               <span className="text-[14px] text-TextGray">
-                @{tweet.username}
+                {tweet.username || routeUsername
+                  ? `@${tweet.username || routeUsername}`
+                  : tweet.display_name || "Unknown account"}
               </span>
             </div>
             {/* Text */}
@@ -80,6 +87,31 @@ const TweetDetails = () => {
                 {tweet.tweet_text}
               </p>
             </div>
+            {!!tweet.tweetImages?.length && (
+              <div className="grid grid-cols-2 gap-2 overflow-hidden rounded-2xl">
+                {tweet.tweetImages.map((url, index) => (
+                  <img
+                    key={url}
+                    src={url}
+                    alt={`Tweet image ${index + 1}`}
+                    className="h-full max-h-[520px] w-full object-cover"
+                  />
+                ))}
+              </div>
+            )}
+            {!!tweet.tweetVideos?.length && (
+              <div className="flex flex-col gap-2">
+                {tweet.tweetVideos.map((url) => (
+                  <video
+                    key={url}
+                    src={url}
+                    controls
+                    playsInline
+                    className="max-h-[520px] w-full rounded-2xl bg-black"
+                  />
+                ))}
+              </div>
+            )}
             {/* Time, View, Likes, Repost */}
             <div className="flex flex-col gap-3">
               {/* Time and View */}
@@ -114,7 +146,7 @@ const TweetDetails = () => {
 
               {/* Buttons */}
               <div className="flex flex-wrap gap-4 sm:gap-8">
-                <MarkBookmark2 />
+                <MarkBookmark2 tweetId={tweet.tweet_id} />
                 <TwitterLink url={tweet.tweet_url} />
               </div>
             </div>

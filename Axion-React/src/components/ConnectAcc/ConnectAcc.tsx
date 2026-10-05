@@ -60,7 +60,7 @@ const ConnectAcc: React.FC = () => {
             <div className="">
               <Button
                 onClick={() => setShowAuth(true)}
-                className="w-full max-w-[20rem] rounded-lg bg-BgBlue hover:bg-blue-500"
+                className="w-[20rem] rounded-[20px] bg-BgBlue hover:bg-blue-500 cursor-pointer py-[10px] px-[16px] text-[14px] font-medium leading-[20px] tracking-[-0.5%] text-White"
               >
                 <span className="text-[14px] font-medium leading-[15px] tracking-[-0.5%] text-White">
                   Connect Account

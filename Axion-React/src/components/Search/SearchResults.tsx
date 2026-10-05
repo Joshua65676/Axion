@@ -3,7 +3,7 @@ import categoryColors from "../../utils/categoryColors";
 import { shortenText } from "../../utils/shortenText";
 import { formatTimeAgo } from "../../utils/timeAgo";
 import type { Tweet } from "../../utils/useFetchTweet";
-import { parseTweetMedia } from "../../utils/parseTweetMedia";
+import { normalizeTweet } from "../../utils/normalizeTweet";
 import MarkBookmark from "../ui/MarkBookmark";
 import View from "../ui/View";
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const SearchResults: React.FC<Props> = ({ results, loading }) => {
-    if (loading)
+  if (loading)
     return (
       <div
         className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-3 text-center text-TextColor"
@@ -32,11 +32,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
       <div className="text-2xl text-center text-Black">No results found.</div>
     );
 
-  const enrichedResults = results.map((tweet) => ({
-    ...tweet,
-    profilePic: tweet.profile_pic || "",
-    ...parseTweetMedia(tweet.media || []),
-  }));
+  const enrichedResults = results.map(normalizeTweet);
 
   return (
     <div className="relative w-full h-full">
@@ -76,7 +72,9 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
                 )}
                 {tweet.is_verified && <span className="text-blue-500">✔️</span>}
                 <span className="text-[14px] text-TextGray">
-                  @{tweet.username}
+                  {tweet.username
+                    ? `@${tweet.username}`
+                    : tweet.display_name || "Unknown account"}
                 </span>
               </div>
 
@@ -90,7 +88,7 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
 
               <div className="flex flex-wrap gap-3">
                 <View tweet={tweet} />
-                <MarkBookmark />
+                <MarkBookmark tweetId={tweet.tweet_id} />
               </div>
             </main>
           </li>

@@ -33,7 +33,7 @@ const Category: React.FC = () => {
             </span>
 
             <button
-              className={`px-3 py-1 rounded hidden lg:flex ${
+              className={`px-3 py-1 rounded-xl cursor-pointer hidden lg:flex ${
                 selectedCategory === null
                   ? "bg-BgBlue text-white"
                   : "bg-gray-200"
@@ -54,7 +54,7 @@ const Category: React.FC = () => {
                 {categories.map((cat, i) => (
                   <button
                     key={i}
-                    className={`px-3 py-1 rounded ${
+                    className={`px-3 py-1 rounded-xl cursor-pointer ${
                       selectedCategory === cat
                         ? "bg-blue-600 text-Black"
                         : "bg-White border border-BorderGray"
@@ -75,9 +75,9 @@ const Category: React.FC = () => {
           <BookmarkFilter />
         </section>
 
-        <div className="lg:hidden flex">
+        <div className="lg:hidden flex z-50">
           <button
-            className={`px-3 py-1 rounded-full fixed bottom-10 right-5 w-[60px] h-[60px] ${
+            className={`px-3 py-1 rounded-full fixed bottom-10 cursor-pointer right-5 w-[60px] h-[60px] ${
               selectedCategory === null ? "bg-BgBlue text-white" : "bg-gray-200"
             }`}
             onClick={() => navigate("/category")}
@@ -91,16 +91,16 @@ const Category: React.FC = () => {
             <EmptyBookmark />
           </>
         ) : (
-          <ul className="grid w-full min-w-0 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="mx-auto grid w-full max-w-[600px] min-w-0 grid-cols-1 gap-3">
             {bookmarks.map((tweet) => {
               return (
                 <li
                   key={tweet.tweet_id}
-                  className="bg-WhiteGray p-[20px] rounded-[30px]"
+                  className="flex min-w-0 flex-col justify-between rounded-2xl border border-BorderGray bg-WhiteGray p-4"
                 >
                   <main className="flex flex-col gap-3">
                     <span
-                      className={`text-[12px] font-medium text-center w-[7rem] h-[28px] p-[5px] rounded-[20px] ${
+                      className={`text-[12px] font-medium text-center w-[8rem] h-[28px] p-[5px] rounded-[20px] ${
                         categoryColors[tweet.category?.toLowerCase()] ||
                         categoryColors.default
                       }`}
@@ -120,19 +120,24 @@ const Category: React.FC = () => {
                         {formatTimeAgo(tweet.created_at)}
                       </span>
                     </div>
-                    <div className="flex gap-3 text-center items-center">
+                    <div className="flex min-w-0 items-center gap-3">
                       {tweet.profilePic && (
                         <img
                           src={tweet.profilePic}
                           alt="Profile"
-                          className="w-10 h-10 rounded-full"
+                          className="size-10 shrink-0 rounded-full object-cover"
                         />
                       )}
-                      <span className="text-[14px] text-TextGray">
-                        @{tweet.username}
-                      </span>
+                      <div className="min-w-0">
+                        <p className="truncate text-[14px] font-semibold text-TextColor">
+                          {tweet.display_name || tweet.username}
+                        </p>
+                        <p className="truncate text-[13px] text-TextGray">
+                          @{tweet.username}
+                        </p>
+                      </div>
                     </div>
-                    <div>
+                    <div className="min-w-0 break-words">
                       <span className="text-[16px] text-TextGray leading-[25px] tracking-[-0.5px] font-medium">
                         {shortenText(tweet.tweet_text, 100)}
                       </span>
@@ -222,9 +227,9 @@ const Category: React.FC = () => {
                     })()}
 
                     <div className="bg-BorderGray h-px"></div>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap items-center justify-between">
                       <View tweet={tweet} />
-                      <MarkBookmark />
+                      <MarkBookmark tweetId={tweet.tweet_id} />
                     </div>
                   </main>
                 </li>

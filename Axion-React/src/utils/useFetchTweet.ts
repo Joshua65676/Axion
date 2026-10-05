@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { parseTweetMedia } from "./parseTweetMedia";
+import { normalizeTweet } from "./normalizeTweet";
 import { API_BASE_URL } from "../constants/api";
 
 export interface Tweet {
   tweet_id: number;
   username: string;
+  display_name?: string;
   tweet_text: string;
   tweet_url: string;
   category: string;
   created_at: string;
   profile_pic: string;
-  media: string[];
+  media: string[] | string;
   video: string;
   likes: number;
   retweets: number;
@@ -34,12 +35,7 @@ export const useFetchTweet = (tweet_id: string | undefined) => {
         if (data.error) {
           setTweet(null);
         } else {
-          const enriched = {
-            ...data,
-            profilePic: data.profile_pic,
-            ...parseTweetMedia(data.media),
-          };
-          setTweet(enriched);
+          setTweet(normalizeTweet(data));
         }
         setLoading(false);
       })

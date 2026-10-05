@@ -15,12 +15,12 @@ try {
   $category = $_GET['category'] ?? null;
 
   if ($category) {
-    $stmt = $conn->prepare("SELECT tweet_id, tweet_text, username, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+    $stmt = $conn->prepare("SELECT tweet_id, tweet_text, username, display_name, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
       FROM bookmark
       WHERE user_id = ? AND category = ?");
     $stmt->bind_param("ss", $user_id, $category);
   } else {
-    $stmt = $conn->prepare("SELECT tweet_id, tweet_text, username, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
+    $stmt = $conn->prepare("SELECT tweet_id, tweet_text, username, display_name, profile_pic, tweet_url, media, video, likes, retweets, comments, views, stickers, is_verified, category, created_at, updated_at
       FROM bookmark
       WHERE user_id = ?");
     $stmt->bind_param("s", $user_id);

@@ -1,18 +1,28 @@
-import React from 'react'
-import { Button } from './Button'
-import { CheckMark } from '../../assets'
+import React from "react";
+import { Button } from "./Button";
+import { CheckMark } from "../../assets";
+import { useBookmarkReadState } from "../../utils/useBookmarkReadState";
 
-const MarkBookmark: React.FC = () => {
-  return (
-    <>
-      <section className="">
-        <Button className="bg-WhiteGray flex flex-row gap-5 w-[158px] h-[40px] border border-ParagraphGray">
-          <img src={CheckMark} alt='MarkIcon' />
-          <span className="text-[12px] text-ParagraphGray font-medium leading-[15px] tracking-[0px]">Mark as Read</span>
-        </Button>
-      </section>
-    </>
-  )
+interface Props {
+  tweetId: string | number;
 }
 
-export default MarkBookmark
+const MarkBookmark: React.FC<Props> = ({ tweetId }) => {
+  const { isRead, toggleRead } = useBookmarkReadState(tweetId);
+
+  return (
+    <Button
+      type="button"
+      aria-pressed={isRead}
+      onClick={toggleRead}
+      className="relative z-10 flex h-[40px] w-[158px] flex-row gap-3 border border-ParagraphGray bg-WhiteGray rounded-[20px] cursor-pointer"
+    >
+      <img src={CheckMark} alt="" aria-hidden="true" />
+      <span className="text-[12px] font-medium leading-[15px] tracking-[0px] text-ParagraphGray">
+        {isRead ? "Mark as Unread" : "Mark as Read"}
+      </span>
+    </Button>
+  );
+};
+
+export default MarkBookmark;

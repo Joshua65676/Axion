@@ -18,11 +18,14 @@ export const useFetchBookmarks = (category: string | null) => {
     fetch(url, { credentials: "include" })
       .then((res) => res.json())
       .then((data: BookmarkResponse) => {
-        const enriched = data.bookmark.map((tweet) => ({
-          ...tweet,
-          profilePic: tweet.profile_pic || "",
-          ...parseTweetMedia(tweet.media || []),
-        }));
+        const enriched = data.bookmark.map((tweet) => {
+          const parsedMedia = parseTweetMedia(tweet.media || []);
+          return {
+            ...tweet,
+            ...parsedMedia,
+            profilePic: tweet.profile_pic || parsedMedia.profilePic || "",
+          };
+        });
 
         setBookmarks(enriched);
       })

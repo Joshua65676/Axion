@@ -14,7 +14,7 @@ if (!$tweet_id) {
 
 // Fetch tweet
 $stmt = $conn->prepare("SELECT * FROM bookmark WHERE tweet_id = ?");
-$stmt->bind_param("i", $tweet_id);
+$stmt->bind_param("s", $tweet_id);
 $stmt->execute();
 $result = $stmt->get_result();
 

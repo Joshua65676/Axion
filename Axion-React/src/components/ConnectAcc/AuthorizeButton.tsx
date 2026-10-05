@@ -15,7 +15,7 @@ const AuthorizeButton: React.FC = () => {
         <Button
           onClick={handleLogin}
           disabled={isLoading}
-          className="h-[50px] w-full bg-BgBlue hover:bg-BlueHover"
+          className="h-[50px] w-full bg-BgBlue hover:bg-BlueHover rounded-[20px] cursor-pointer"
         >
           <span className="text-[16px] font-semibold leading-[20px] tracking-[0px] text-White">
             {isLoading ? "Loading...." : "Authorize Twitter Access"}

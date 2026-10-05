@@ -8,7 +8,11 @@ interface Props {
 const BackButton: React.FC<Props> = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick} className="">
+      <button
+        type="button"
+        onClick={onClick}
+        className="relative z-10 cursor-pointer"
+      >
         <img src={BackArrow} alt="back arrow" />
       </button>
     </>

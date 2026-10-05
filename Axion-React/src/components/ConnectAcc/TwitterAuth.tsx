@@ -40,7 +40,7 @@ const TwitterAuth: React.FC<TwitterAuthProps> = ({ onCancel }) => {
           <AuthorizeButton />
           <Button
             onClick={onCancel}
-            className="h-[50px] w-full border border-Black bg-White"
+            className="h-[50px] w-full border border-Black bg-White rounded-[20px] cursor-pointer"
           >
             <span className="text-[16px] font-semibold leading-[20px] text-BgBlue">
               Cancel

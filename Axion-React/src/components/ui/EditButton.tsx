@@ -34,7 +34,7 @@ const EditCategory: React.FC<Props> = ({
   };
 
   return (
-    <div className="flex items-center text-center gap-2 -mt-2 justify-center pl-12">
+    <div className="flex items-center text-center gap-2 -mt-1.5 pl-3 justify-center">
       {editing ? (
         <div className="flex flex-row gap-2 pl-[5.5rem] justify-center items-center">
           <input
@@ -42,11 +42,11 @@ const EditCategory: React.FC<Props> = ({
             title="update category"
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
-            className="border px-2 py-1 rounded-[20px] w-[7rem] flex flex-row"
+            className="border px-2 py-1 rounded-[20px] w-[8rem] flex flex-row"
           />
           <button
             onClick={handleUpdate}
-            className="px-2 py-1 bg-blue-600 text-white rounded"
+            className="px-2 py-1 bg-blue-600 text-white rounded cursor-pointer"
           >
             Save
           </button>
@@ -55,20 +55,20 @@ const EditCategory: React.FC<Props> = ({
               setEditing(false);
               setNewCategory(currentCategory);
             }}
-            className="text-gray-500 text-sm"
+            className="text-gray-500 text-sm cursor-pointer"
           >
             Cancel
           </button>
         </div>
       ) : (
         <>
-          <span className="text-[12px] font-medium text-center text-Black flex flex-row">
+          <span className="text-[12px] font-medium text-center text-Black flex flex-row mt-1">
             {currentCategory}
           </span>
-          <div className="">
+          <div className="mt-1">
             <button
               onClick={() => setEditing(true)}
-              className="text-blue-600 text-sm"
+              className="text-blue-600 text-sm cursor-pointer"
             >
               ✏️
             </button>

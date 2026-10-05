@@ -43,7 +43,9 @@ foreach ($bookmarks as $tweet) {
     $username     = isset($tweet['username']) ? $conn->real_escape_string($tweet['username']) : '';
     $display_name = isset($tweet['display_name']) ? $conn->real_escape_string($tweet['display_name']) : '';
     $tweet_url    = isset($tweet['tweet_url']) ? $conn->real_escape_string($tweet['tweet_url']) : '';
-    $profile_pic  = isset($tweet['profilePic']) ? $conn->real_escape_string($tweet['profilePic']) : '';
+    $profile_pic  = isset($tweet['profile_pic'])
+        ? $conn->real_escape_string($tweet['profile_pic'])
+        : (isset($tweet['profilePic']) ? $conn->real_escape_string($tweet['profilePic']) : '');
     $media        = isset($tweet['media']) ? $conn->real_escape_string(json_encode($tweet['media'])) : '';
     $video        = isset($tweet['video']) ? $conn->real_escape_string($tweet['video']) : '';
     $comments     = isset($tweet['comments']) ? $conn->real_escape_string($tweet['comments']) : '';

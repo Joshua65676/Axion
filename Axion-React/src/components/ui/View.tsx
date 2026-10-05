@@ -11,13 +11,19 @@ interface Props {
 const View: React.FC<Props> = ({ tweet }) => {
   return (
     <>
-      <Link to={`/${tweet.username}/tweet/${tweet.tweet_id}`} state={{ tweet }}>
-        <Button className="bg-ViewButton w-[142px] h-[40px] text-center hover:bg-BlueHover">
+      <Button
+        asChild
+        className="relative z-10 h-[40px] w-[142px] bg-ViewButton text-center hover:bg-BlueHover rounded-[20px] border-none"
+      >
+        <Link
+          to={`/${tweet.username}/tweet/${tweet.tweet_id}`}
+          state={{ tweet }}
+        >
           <span className="text-[12px] font-medium leading-[15px] tracking-[0px] text-White">
             View
           </span>
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </>
   );
 };
