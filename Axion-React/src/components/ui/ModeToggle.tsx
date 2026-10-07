@@ -31,17 +31,17 @@ const ModeToggle: React.FC = () => {
         {/* Main Toggle */}
         <div className="flex justify-between items-center flex-row gap-3">
           <span className="text-TextColor text-[14px] font-medium leading-[15px] tracking-0">{isDarkMode ? "Dark Mode" : "Light Mode"}</span>
-          <div className="flex flex-row gap-2 p-1 px-1.5 items-center w-[120px] h-[45px] bg-BorderGray rounded-[50px]">
+          <div className="flex flex-row justify-between p- px-2 items-center w-[120px] h-[45px] bg-WhiteGray rounded-[50px]">
             <button
              onClick={activateLightMode}
-             className={` ${!isDarkMode ? "bg-White" : ""}`}
+             className={` w-[50px] h-[36px] rounded-[50px] text-center px-4 cursor-pointer ${!isDarkMode ? "bg-White" : ""}`}
             >
             <img src={Sun} alt="Light Mode"/>
             </button>
 
             <button
              onClick={activateDarkMode}
-             className={`${isDarkMode ? "bg-White" : ""}`}
+             className={`w-[50px] h-[36px] rounded-[50px] text-center px-4 cursor-pointer ${isDarkMode ? "bg-White" : ""}`}
             >
             <img src={Moon} alt="Dark Mode"/>
             </button>

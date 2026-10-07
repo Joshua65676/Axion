@@ -35,16 +35,16 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
   const enrichedResults = results.map(normalizeTweet);
 
   return (
-    <div className="relative w-full h-full">
-      <ul className="grid w-full min-w-0 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <div className="relative h-full w-full">
+      <ul className="mx-auto grid w-full max-w-[600px] min-w-0 grid-cols-1 gap-3">
         {enrichedResults.map((tweet) => (
           <li
             key={tweet.tweet_id}
-            className="bg-WhiteGray p-[20px] rounded-[30px]"
+            className="flex min-w-0 flex-col justify-between rounded-2xl border border-BorderGray bg-WhiteGray p-4"
           >
             <main className="flex flex-col gap-3">
               <span
-                className={`text-[12px] font-medium text-center w-[7rem] h-[28px] p-[5px] rounded-[20px] ${
+                className={`h-[28px] w-[7rem] rounded-[20px] p-[5px] text-center text-[12px] font-medium ${
                   categoryColors[tweet.category?.toLowerCase()] ||
                   categoryColors.default
                 }`}
@@ -53,40 +53,42 @@ const SearchResults: React.FC<Props> = ({ results, loading }) => {
               </span>
 
               <div className="flex justify-between">
-                <span className="text-[12px] text-TextGray font-medium">
+                <span className="text-[12px] font-medium text-TextGray">
                   Bookmarked:
                 </span>
-                <span className="flex text-TextGray text-[14px] items-center gap-1">
+                <span className="flex items-center gap-1 text-[14px] text-TextGray">
                   <img src={Time} alt="timeicon" />
                   {formatTimeAgo(tweet.created_at)}
                 </span>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex min-w-0 items-center gap-3">
                 {tweet.profilePic && (
                   <img
                     src={tweet.profilePic}
                     alt="Profile"
-                    className="w-10 h-10 rounded-full"
+                    className="size-10 shrink-0 rounded-full object-cover"
                   />
                 )}
-                {tweet.is_verified && <span className="text-blue-500">✔️</span>}
-                <span className="text-[14px] text-TextGray">
-                  {tweet.username
-                    ? `@${tweet.username}`
-                    : tweet.display_name || "Unknown account"}
-                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-[14px] font-semibold text-TextColor">
+                    {tweet.display_name || tweet.username}
+                  </p>
+                  <p className="truncate text-[13px] text-TextGray">
+                    @{tweet.username}
+                  </p>
+                </div>
               </div>
 
               <div>
-                <span className="text-[16px] text-TextGray leading-[25px] tracking-[-0.5px] font-medium">
+                <span className="text-[16px] font-medium leading-[25px] tracking-[-0.5px] text-TextGray">
                   {shortenText(tweet.tweet_text, 100)}
                 </span>
               </div>
 
-              <div className="bg-BorderGray h-px"></div>
+              <div className="h-px bg-BorderGray"></div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-3">
                 <View tweet={tweet} />
                 <MarkBookmark tweetId={tweet.tweet_id} />
               </div>

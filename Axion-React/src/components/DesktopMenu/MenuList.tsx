@@ -1,13 +1,15 @@
 import React from "react";
 import { MenuListItems } from "../../constants";
 import { NavLink } from "react-router-dom";
+import MobileToggle from "../ui/MobileToggle";
 
 const MenuList: React.FC = () => {
   return (
     <section className="container max-w-6xl mx-auto w-full">
       <main className="flex flex-col gap-3">
-        <div className="">
+        <div className="flex flex-row items-center justify-between gap-2">
           <h3 className="text-TextColor font-semibold text-[14px]">General</h3>
+          <MobileToggle />
         </div>
 
         <div className=" bg-BorderGray -ml-3 h-px"></div>

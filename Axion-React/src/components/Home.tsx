@@ -6,11 +6,13 @@ import ExtensionNotInstall from "./Extension/ExtensionNotInstall";
 import BookmarksScreen from "./Bookmark/BookmarkScreen";
 import { useFetchBookmarks } from "../utils/FetchBookmarks";
 import SearchButton from "./ui/SearchButton";
+import { useUnreadBookmarkCount } from "../utils/useBookmarkReadState";
 
 const Home: React.FC = () => {
   const [extensionInstalled, setExtensionInstalled] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { bookmarkCount } = useFetchBookmarks();
+  const { bookmarkCount, bookmarks } = useFetchBookmarks();
+  const unreadCount = useUnreadBookmarkCount(bookmarks);
 
   useEffect(() => {
     checkExtensionInstalled().then((installed) => {
@@ -52,7 +54,7 @@ const Home: React.FC = () => {
           </section>
 
           <section className="grid grid-cols-2 gap-3 sm:gap-5">
-            <div className="flex min-w-0 flex-col gap-3 rounded-3xl border border-UnreadText bg-UnreadBg p-4 sm:min-h-[143px] sm:p-5">
+            <div className="flex min-w-0 flex-col gap-3 rounded-3xl border border-UnreadText bg-UnreadBg p-4 transition-all duration-200 sm:min-h-[143px] sm:p-5">
               <div className="flex flex-row gap-[3px]">
                 <img src={Unread} alt="unread icon" />
                 <span className="text-[12px] font-normal leading-[125%] tracking-[-0.5%] text-UnreadText">
@@ -60,7 +62,7 @@ const Home: React.FC = () => {
                 </span>
               </div>
               <span className="text-[32px] font-normal leading-[100%] tracking-[-0.5%] text-Black">
-                0
+                {unreadCount}
               </span>
             </div>
 
