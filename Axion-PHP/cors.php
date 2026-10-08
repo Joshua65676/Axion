@@ -3,11 +3,12 @@
 require_once __DIR__ . '/vendor/autoload.php';
 Dotenv\Dotenv::createImmutable(__DIR__)->safeLoad();
 
-$frontendUrl = rtrim($_ENV['FRONTEND_URL'] ?? getenv('FRONTEND_URL') ?: 'http://localhost:5173', '/');
+$frontendUrl = rtrim($_ENV['FRONTEND_URL'] ?? getenv('FRONTEND_URL') ?: 'https://axion-orpin.vercel.app', '/');
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 
 $allowedOrigins = [
     $frontendUrl,
+    'https://axion-orpin.vercel.app',
     'http://localhost',
     'http://localhost:5173',
     'http://localhost:5174',

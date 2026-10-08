@@ -9,7 +9,7 @@ require_once __DIR__ . '/session.php';
 $consumerKey = $_ENV['CONSUMER_KEY'] ?? getenv('CONSUMER_KEY');
 $consumerSecret = $_ENV['CONSUMER_SECRET'] ?? getenv('CONSUMER_SECRET');
 
-$callbackUrl = rtrim($_ENV['API_BASE_URL'] ?? getenv('API_BASE_URL'), '/') . '/twitter-callback.php';
+$callbackUrl = rtrim($_ENV['API_BASE_URL'] ?? getenv('API_BASE_URL') ?: 'https://axion-api-1ylh.onrender.com', '/') . '/twitter-callback.php';
 
 $connection = new TwitterOAuth($consumerKey, $consumerSecret);
 $request_token = $connection->oauth('oauth/request_token', ['oauth_callback' => $callbackUrl]);

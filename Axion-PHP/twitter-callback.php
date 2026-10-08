@@ -93,5 +93,5 @@ $_SESSION['screen_name'] = $screen_name;
 // $_SESSION['email'] = $email;
 
 // Redirect to React dashboard
-header('Location: ' . rtrim($_ENV['FRONTEND_URL'] ?? getenv('FRONTEND_URL'), '/') . '/home');
+header('Location: ' . rtrim($_ENV['FRONTEND_URL'] ?? getenv('FRONTEND_URL') ?: 'https://axion-orpin.vercel.app', '/') . '/home');
 exit;
