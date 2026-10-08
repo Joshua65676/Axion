@@ -25,7 +25,7 @@ const MobileToggle: React.FC = () => {
 
   return (
     <main>
-      <section className="flex flex-col">
+      <section className="flex flex-col md:hidden">
         <div className="flex flex-row items-center justify-between gap-3">
           <span className="flex flex-row items-center gap-2 text-[14px] font-medium leading-[15px] tracking-0 text-TextColor">
             {isDarkMode ? (
