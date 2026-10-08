@@ -1,5 +1,5 @@
-import Vector from './vector.svg';
-import Notification from './notification.svg';
+import Vector from './Vector.svg';
+import Notification from './Notification.svg';
 import Logo from  './image/AxionLogo.jpeg'
 import Hamburger from './hamburger.svg';
 import Home from './Home.svg';
