@@ -11,6 +11,11 @@ $password = $_ENV['DB_PASSWORD'] ?? getenv('DB_PASSWORD');
 $sslCa = $_ENV['MYSQL_SSL_CA'] ?? getenv('MYSQL_SSL_CA');
 $sslCert = $_ENV['MYSQL_SSL_CERT'] ?? getenv('MYSQL_SSL_CERT');
 $sslKey = $_ENV['MYSQL_SSL_KEY'] ?? getenv('MYSQL_SSL_KEY');
+$bundledSslCa = __DIR__ . DIRECTORY_SEPARATOR . 'certs' . DIRECTORY_SEPARATOR . 'ca.pem';
+
+if (!empty($sslCa) && !is_readable($sslCa) && is_readable($bundledSslCa)) {
+    $sslCa = $bundledSslCa;
+}
 
 if (!$host || !$dbname || !$username || $password === false || $password === null) {
     http_response_code(500);
